@@ -5,8 +5,26 @@ import { Label } from "@/components/ui/label";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+// types for Inputs
+type Inputs = {
+    email: string;
+    password: string;
+
+}
 
 const Login = () => {
+    // react hook form
+    const {
+        register,
+        handleSubmit,
+        // watch,
+        formState: { errors },
+    } = useForm<Inputs>()
+    const onSubmit: SubmitHandler<Inputs> = (user_info) => {
+
+        console.log(user_info)
+    }
     const [showPassword, setShowPassword] = useState(false);
     return (
         <section>
@@ -14,7 +32,7 @@ const Login = () => {
                 <h2 className="text-center font-bold text-2xl mb-6">Log In</h2>
 
                 {/* Form */}
-                <form className="space-y-5">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
 
 
                     {/* Email Field */}
@@ -22,6 +40,7 @@ const Login = () => {
                         <Label htmlFor="email">Email <span className='text-red-700 font-bold'>*</span></Label>
                         <Input type="email" id="email" placeholder="Enter email"
                             required
+                            {...register('email')}
                         />
                     </div>
 
@@ -35,6 +54,7 @@ const Login = () => {
                                 placeholder="Enter password"
                                 className="pr-10"
                                 required
+                                {...register('password')}
                             />
                             <Button
                                 type="button"

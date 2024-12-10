@@ -7,13 +7,31 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import ImageUploading from 'react-images-uploading';
-
+import { useForm, SubmitHandler } from "react-hook-form";
+// types for Inputs
+type Inputs = {
+    user_name: string;
+    email: string;
+    password: string;
+    img: object;
+}
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [images, setImages] = useState([]);
-
+    // react hook form
+    const {
+        register,
+        handleSubmit,
+        // watch,
+        formState: { errors },
+    } = useForm<Inputs>()
+    const onSubmit: SubmitHandler<Inputs> = (user_info) => {
+        user_info.img = images[0].file;
+        console.log(user_info)
+    }
     // Handle image change
-    const handleImageChange = (imageList: any) => {
+    const handleImageChange = (imageList: []) => {
+
         setImages(imageList);
     };
 
@@ -36,12 +54,15 @@ const Register = () => {
                 </div>
 
                 {/* Form */}
-                <form className="space-y-5">
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="space-y-5">
                     {/* Name Field */}
                     <div className="grid w-full items-center gap-1.5">
                         <Label htmlFor="name">Your Name <span className='text-red-700 font-bold'>*</span></Label>
                         <Input type="text" id="name" placeholder="Enter Name"
                             required
+                            {...register('user_name')}
                         />
                     </div>
 
@@ -50,6 +71,7 @@ const Register = () => {
                         <Label htmlFor="email">Email <span className='text-red-700 font-bold'>*</span></Label>
                         <Input type="email" id="email" placeholder="Enter email"
                             required
+                            {...register('email')}
                         />
                     </div>
 
@@ -91,6 +113,7 @@ const Register = () => {
                                 placeholder="Enter password"
                                 className="pr-10"
                                 required
+                                {...register('password')}
                             />
                             <Button
                                 type="button"
