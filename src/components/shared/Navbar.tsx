@@ -22,9 +22,9 @@ export default function Navbar() {
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2">
             {/* Logo */}
-            <Link href="#" className="mr-6 flex items-center lg:mr-12" prefetch={false}>
+            <Link href="/" className="mr-6 flex items-center lg:mr-12" prefetch={false}>
                 <MountainIcon />
-                <span className="ml-2 text-xs hidden lg:block">Nihongo Dojo</span>
+                <span className="ml-2 text-lg text-primary hidden lg:block">Nihongo Dojo</span>
             </Link>
 
             {/* Navigation Menu */}
@@ -46,9 +46,11 @@ export default function Navbar() {
                 </NavigationMenu>
             </div>
 
-            {/* Get Started Button */}
+            {/* lLogin button*/}
             <div className="ml-auto hidden lg:block">
-                <Button>Get Started</Button>
+                <Link href='/login'>
+                    <Button variant='default'>Login</Button>
+                </Link>
             </div>
 
             {/* Mobile Menu */}
@@ -56,6 +58,7 @@ export default function Navbar() {
                 <SheetTrigger asChild>
                     <Button variant="outline" size="icon" className="lg:hidden ml-auto">
                         <MenuIcon />
+                        {/* <button>login</button> */}
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                 </SheetTrigger>
@@ -79,8 +82,8 @@ export default function Navbar() {
 }
 
 function MenuIcon() {
-    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+    return <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
     </svg>
 
 }
