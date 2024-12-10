@@ -20,11 +20,11 @@ const navItems = [
 ]
 export default function Navbar() {
     return (
-        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2">
+        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
             {/* Logo */}
             <Link href="/" className="mr-6 flex items-center lg:mr-12" prefetch={false}>
                 <MountainIcon />
-                <span className="ml-2 text-lg text-primary hidden lg:block">Nihongo Dojo</span>
+                <span className="ml-2 text-lg text-white hidden lg:block">Nihongo Dojo</span>
             </Link>
 
             {/* Navigation Menu */}
@@ -48,9 +48,11 @@ export default function Navbar() {
 
             {/* lLogin button*/}
             <div className="ml-auto hidden lg:block">
+                <Link className="mr-2" href='/register'>Register</Link>
                 <Link href='/login'>
-                    <Button variant='default'>Login</Button>
+                    <Button variant='default' className="rounded-full">Login</Button>
                 </Link>
+
             </div>
 
             {/* Mobile Menu */}
