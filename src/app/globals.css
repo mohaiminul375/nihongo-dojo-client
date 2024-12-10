@@ -20,7 +20,7 @@ body {
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 225 88% 63%;  /* HSL equivalent of #5754F7 */
+    --primary: 241, 63%, 55%;  /* HSL equivalent of #4542D4 */
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
