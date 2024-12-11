@@ -2,10 +2,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { EyeIcon, EyeOffIcon, UserPlus } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useUserLogin } from "./api/route";
 // types for Inputs
 type Inputs = {
     email: string;
@@ -14,6 +15,7 @@ type Inputs = {
 }
 
 const Login = () => {
+    const login = useUserLogin();
     // react hook form
     const {
         register,
@@ -21,9 +23,10 @@ const Login = () => {
         // watch,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (user_info) => {
-
+    const onSubmit: SubmitHandler<Inputs> = async (user_info) => {
         console.log(user_info)
+        await login.mutateAsync(user_info);
+
     }
     const [showPassword, setShowPassword] = useState(false);
     return (

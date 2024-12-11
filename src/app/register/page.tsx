@@ -54,8 +54,13 @@ const Register = () => {
                         return;
                     }
                     console.log(user_info)
-                    const response = await createUser.mutateAsync(user_info);
-                    console.log(response)
+                    try {
+                        const response = await createUser.mutateAsync(user_info);
+                        console.log(response)
+                        toast.success('register successfully')
+                    } catch (error) {
+                        console.log(error.message)
+                    }
 
                     // Successfully obtained the image URL
                 } catch (error) {
