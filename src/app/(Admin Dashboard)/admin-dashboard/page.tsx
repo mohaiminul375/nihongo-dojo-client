@@ -3,6 +3,7 @@ import Overview from '@/components/Admin-Dashboard/Overview/Overview';
 import Users from '@/components/Admin-Dashboard/User/Users';
 import Tutorials from '@/components/Admin-Dashboard/Tutorials/Tutorials';
 import React from 'react';
+import Vocabulary from '@/components/Admin-Dashboard/Vocabulary/Vocabulary';
 
 const Dashboard = () => {
     return (
@@ -19,6 +20,10 @@ const Dashboard = () => {
                 {/* Tutorials Management */}
                 <div>
                     <Tutorials />
+                </div>
+                {/* Vocabulary */}
+                <div>
+                    <Vocabulary />
                 </div>
                 {/* lesson */}
                 <div>
