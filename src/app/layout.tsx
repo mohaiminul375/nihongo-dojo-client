@@ -36,17 +36,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="">
-      <QueryClientProvider client={queryClient}>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <QueryClientProvider client={queryClient}>
           <Navbar />
           <main className="mt-10">
             {children}
           </main>
           <Toaster />
-        </body>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </body>
     </html>
   );
 }

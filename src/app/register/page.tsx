@@ -10,6 +10,7 @@ import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import { useCreateUser } from './api/route';
 // types for Inputs
 type Inputs = {
     user_name: string;
@@ -18,6 +19,7 @@ type Inputs = {
     img: File;
 }
 const Register = () => {
+    const createUser = useCreateUser();
     const [showPassword, setShowPassword] = useState(false);
     const [images, setImages] = useState<ImageListType>([]);
     // react hook form
@@ -44,18 +46,21 @@ const Register = () => {
                     });
 
                     // Get the image URL
-                    const img_url = res.data.display_url;
+                    const img_url = res?.data?.display_url;
                     console.log(img_url);
-
+                    user_info.img = img_url;
                     if (!img_url) {
                         toast.error('Error from the image server. Please try again or contact the developer.');
                         return;
                     }
+                    console.log(user_info)
+                    const response = await createUser.mutateAsync(user_info);
+                    console.log(response)
 
                     // Successfully obtained the image URL
                 } catch (error) {
                     console.error("Image upload failed:", error);
-                    toast.error('Image upload failed. Please try again.');
+                    // toast.error('Image upload failed. Please try again.');
                 }
             };
 
