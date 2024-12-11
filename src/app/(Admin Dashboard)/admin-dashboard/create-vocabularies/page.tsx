@@ -11,24 +11,92 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
+import toast from 'react-hot-toast';
+import { useCreateVocabulary } from './api/route';
 type Inputs = {
-    email: string;
-    password: string;
-
+    word: string;
+    pronunciation: string;
+    when_to_say: string;
+    english_meaning: string;
+    lesson_no: number | string;
 }
+// lesson type
+interface Lessons {
+    lesson_no: number;
+    lesson_name: string | number;
+}
+// lessons array
+const lessons: Lessons[] = [
+    {
+        lesson_no: 1,
+        lesson_name: 'Basic Greetings'
+    },
+    {
+        lesson_no: 2,
+        lesson_name: 'Greetings and Time'
+    },
+    {
+        lesson_no: 3,
+        lesson_name: 'Common Phrases'
+    },
+    {
+        lesson_no: 4,
+        lesson_name: 'Basic Conversations'
+    },
+    {
+        lesson_no: 5,
+        lesson_name: 'Languages'
+    },
+    {
+        lesson_no: 6,
+        lesson_name: 'People and Occupations'
+    },
+    {
+        lesson_no: 7,
+        lesson_name: 'Feelings and Health'
+    },
+    {
+        lesson_no: 8,
+        lesson_name: 'Verbs and Actions'
+    },
+    {
+        lesson_no: 9,
+        lesson_name: 'Travel and Directions'
+    },
+    {
+        lesson_no: 10,
+        lesson_name: 'Adjectives'
+    },
+]
+// Main page start form here
 const Page = () => {
+    const createVocabulary = useCreateVocabulary()
     const [lesson, setLesson] = useState('');
     console.log(lesson)
     // react hook form
     const {
         register,
         handleSubmit,
+        reset,
         setValue,
         // watch,
         formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (vocabulary) => {
-        console.log(vocabulary);
+        if (typeof vocabulary.lesson_no === 'string') {
+            vocabulary.lesson_no = parseFloat(vocabulary.lesson_no);
+            vocabulary.createAt = new Date().toLocaleString();
+            console.log(vocabulary)
+            const res = await createVocabulary.mutateAsync(vocabulary);
+            console.log(res)
+            if (res.insertedId) {
+                toast.success('add a vocabulary successfully');
+                reset()
+            }
+
+        } else {
+            toast.error('may have some issue in lesson number')
+        }
     }
     return (
         <section>
@@ -80,11 +148,11 @@ const Page = () => {
                             <Label className='text-[16px]' htmlFor="lesson_no">Lesson Number<span className='text-red-700 font-bold'>*</span></Label>
                             <Select
                                 onValueChange={(value) => {
-                                    setLesson(value)
-                                    setValue("lesson", value, { shouldValidate: true })
+                                    setLesson(value); setValue("lesson_no", value, { shouldValidate: true });
                                 }}
                                 value={lesson}
                             >
+
                                 <SelectTrigger
                                     className="w-full mx-auto">
                                     <SelectValue
@@ -94,8 +162,11 @@ const Page = () => {
                                     />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="User">User</SelectItem>
-                                    <SelectItem value="Admin">Admin</SelectItem>
+                                    {
+                                        lessons.map((lesson) => <SelectItem
+                                            key={lesson.lesson_no}
+                                            value={lesson.lesson_no.toString()}>{`${lesson.lesson_no}-${lesson.lesson_name}`}</SelectItem>)
+                                    }
                                 </SelectContent>
                             </Select>
                         </div>
@@ -105,9 +176,9 @@ const Page = () => {
                         <Button className='w-full' variant='default'>Create a New Vocabulary</Button>
                     </div>
                 </form>
-            </div>
-        </section>
-    );
-};
+            </div >
+        </section >
+    )
+}
 
 export default Page;
