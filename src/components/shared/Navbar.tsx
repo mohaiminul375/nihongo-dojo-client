@@ -16,6 +16,10 @@ const navItems = [
     {
         title: 'Tutorials',
         path: '/tutorials'
+    },
+    {
+        title: 'Admin Dashboard',
+        path: '/admin-dashboard'
     }
 ]
 export default function Navbar() {
