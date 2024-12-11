@@ -157,13 +157,10 @@ const Page = () => {
                                 }}
                                 value={lesson}
                             >
-
                                 <SelectTrigger
                                     className="w-full mx-auto">
                                     <SelectValue
-
                                         placeholder="Lesson No"
-
                                     />
                                 </SelectTrigger>
                                 <SelectContent>
