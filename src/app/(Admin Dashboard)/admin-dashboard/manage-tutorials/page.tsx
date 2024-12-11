@@ -1,9 +1,11 @@
 'use client';
 import AddTutorials from "@/components/Admin-Dashboard/Tutorials/AddTutorials";
-import { useGetTutorials } from "./api/rote";
-
+import { useDeleteTutorial, useGetTutorials } from "./api/rote";
+import { Button } from "@/components/ui/button";
+import Swal from 'sweetalert2'
 const ManageTutorials = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();
+    const deleteTutorial = useDeleteTutorial()
 
     if (isPending) {
         return (
@@ -20,7 +22,30 @@ const ManageTutorials = () => {
             </div>
         );
     }
+    // delete video
+    const handleDeleteVideo = (id: string) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            console.log(id)
+            const res = await deleteTutorial.mutateAsync(id);
+            console.log(res)
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
 
+    }
     return (
         <section className="md:max-w-7xl mx-auto">
             {/* Header Section */}
@@ -60,7 +85,11 @@ const ManageTutorials = () => {
                             {/* Content Below Video */}
                             <div className="bg-gray-100 p-4 text-center">
                                 <h3 className="text-lg font-semibold text-gray-800 truncate">{video.title}</h3>
-                                <p className="text-sm text-gray-600 mt-2">Video Description</p>
+                                <Button
+                                    onClick={() => handleDeleteVideo(video._id)}
+                                    variant='outline' className="bg-red-700 text-white font-semibold">
+                                    Delete Video
+                                </Button>
                             </div>
                         </div>
                     ))}
