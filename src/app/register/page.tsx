@@ -6,18 +6,20 @@ import { EyeIcon, EyeOffIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import ImageUploading from 'react-images-uploading';
+import ImageUploading, { ImageListType } from 'react-images-uploading';
 import { useForm, SubmitHandler } from "react-hook-form";
+import toast from 'react-hot-toast';
+import axios from 'axios';
 // types for Inputs
 type Inputs = {
     user_name: string;
     email: string;
     password: string;
-    img: object;
+    img: File;
 }
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState<ImageListType>([]);
     // react hook form
     const {
         register,
@@ -25,13 +27,48 @@ const Register = () => {
         // watch,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (user_info) => {
-        user_info.img = images[0].file;
-        console.log(user_info)
+    const onSubmit: SubmitHandler<Inputs> = async (user_info) => {
+        if (images.length > 0 && images[0]?.file) {
+            const file = images[0].file;
+
+            // Convert file to Base64
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = async () => {
+                try {
+                    const base64Image = reader.result.split(',')[1]; // Extract Base64 content.
+
+                    // Upload to ImgBB
+                    const { data: res } = await axios.post(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMG_API}`, { image: base64Image }, {
+                        headers: { "content-type": "multipart/form-data" },
+                    });
+
+                    // Get the image URL
+                    const img_url = res.data.display_url;
+                    console.log(img_url);
+
+                    if (!img_url) {
+                        toast.error('Error from the image server. Please try again or contact the developer.');
+                        return;
+                    }
+
+                    // Successfully obtained the image URL
+                } catch (error) {
+                    console.error("Image upload failed:", error);
+                    toast.error('Image upload failed. Please try again.');
+                }
+            };
+
+            reader.onerror = () => {
+                toast.error("Error reading the file.");
+            };
+        } else {
+            toast.error("Image is required!");
+        }
+
     }
     // Handle image change
-    const handleImageChange = (imageList: []) => {
-
+    const handleImageChange = (imageList: ImageListType) => {
         setImages(imageList);
     };
 
@@ -113,7 +150,13 @@ const Register = () => {
                                 placeholder="Enter password"
                                 className="pr-10"
                                 required
-                                {...register('password')}
+                                {...register("password", {
+                                    required: 'Password is required',
+                                    minLength: {
+                                        value: 6,
+                                        message: 'Password must be at least 6 characters long'
+                                    }
+                                })}
                             />
                             <Button
                                 type="button"
@@ -130,6 +173,7 @@ const Register = () => {
                                 )}
                             </Button>
                         </div>
+                        {errors.password && <p className='text-red-700 text-sm'>{errors.password.message}</p>}
                     </div>
 
                     {/* Submit Button */}
