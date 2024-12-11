@@ -18,6 +18,7 @@ type Inputs = {
     pronunciation: string;
     when_to_say: string;
     english_meaning: string;
+    createAt: string;
     lesson_no: number | string;
 }
 // lesson type
@@ -87,11 +88,15 @@ const Page = () => {
             vocabulary.lesson_no = parseFloat(vocabulary.lesson_no);
             vocabulary.createAt = new Date().toLocaleString();
             console.log(vocabulary)
+            // send to db
             const res = await createVocabulary.mutateAsync(vocabulary);
             console.log(res)
+            // res from server
             if (res.insertedId) {
                 toast.success('add a vocabulary successfully');
                 reset()
+            } else {
+                toast.error('operation failed try later')
             }
 
         } else {
