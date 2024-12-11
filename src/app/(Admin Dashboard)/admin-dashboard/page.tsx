@@ -1,7 +1,7 @@
-import Lesson from '@/components/Admin-Dashboard/Overview/Lessoon/Lesson';
+import Lesson from '@/components/Admin-Dashboard/Lessoon/Lesson';
 import Overview from '@/components/Admin-Dashboard/Overview/Overview';
 import Users from '@/components/Admin-Dashboard/Overview/User/Users';
-import Tutorials from '@/components/Tutorials/Tutorials';
+import Tutorials from '@/components/Admin-Dashboard/Tutorials/Tutorials';
 import React from 'react';
 
 const Dashboard = () => {
