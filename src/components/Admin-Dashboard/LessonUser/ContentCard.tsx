@@ -1,13 +1,19 @@
-// import { Card, CardHeader, CardContent, CardFooter } from "@shadcn/ui";
-// import { Button } from "@shadcn/ui";
+
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import Link from "next/link";
+
 
 const ContentCard = ({ content }) => {
     const { word, pronunciation, when_to_say, english_meaning } = content;
-
+    // Speaking function
+    const handleSpeak = () => {
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'ja-JP'; // Japanese
+        window.speechSynthesis.speak(utterance);
+    }
     return (
-        <Card className="md:w-[300px] shadow-lg text-center font-bold">
+        <Card
+            onClick={handleSpeak}
+            className="md:w-[300px] shadow-lg text-center font-bold">
             <CardHeader className="pb-2">
                 <h3 className="text-xl font-semibold mb-1">{word}</h3>
                 <p className="text-xl text-muted-foreground italic">/{pronunciation}/</p>
