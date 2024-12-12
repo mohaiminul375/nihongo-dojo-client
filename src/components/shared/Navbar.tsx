@@ -5,6 +5,20 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from "@/compon
 import Image from "next/image";
 import logo from "../../../public/logo.webp";
 import { usePathname } from "next/navigation";
+import { useAuth } from "@/hooks/useAuth";
+import {
+    Avatar,
+    AvatarFallback,
+    AvatarImage,
+} from "@/components/ui/avatar"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 const navItems = [
     {
         title: 'Home',
@@ -27,6 +41,8 @@ const navItems = [
 export default function Navbar() {
     const pathname = usePathname()
     console.log(pathname)
+    const user = useAuth();
+    console.log(user)
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
             {/* Logo */}
@@ -55,13 +71,31 @@ export default function Navbar() {
             </div>
 
             {/* lLogin button*/}
-            <div className="ml-auto hidden lg:block">
-                <Link className="mr-2" href='/register'>Register</Link>
-                <Link href='/login'>
-                    <Button variant='default' className="rounded-full">Login</Button>
-                </Link>
+            {
+                user ? <DropdownMenu>
+                    <DropdownMenuTrigger>
+                        <Avatar>
+                            <AvatarImage src={user?.img} alt="avatar" />
+                            <AvatarFallback></AvatarFallback>
+                        </Avatar>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>Profile</DropdownMenuItem>
+                        <DropdownMenuItem>Billing</DropdownMenuItem>
+                        <DropdownMenuItem>Team</DropdownMenuItem>
+                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    </DropdownMenuContent>
+                </DropdownMenu> :
+                    <div className="ml-auto hidden lg:block">
+                        <Link className="mr-2" href='/register'>Register</Link>
+                        <Link href='/login'>
+                            <Button variant='default' className="rounded-full">Login</Button>
+                        </Link>
 
-            </div>
+                    </div>
+            }
 
             {/* Mobile Menu */}
             <Sheet>
