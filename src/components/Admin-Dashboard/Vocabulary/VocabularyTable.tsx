@@ -76,7 +76,7 @@ const VocabularyTable = ({ vocabulary, idx }) => {
                                         Make changes to the vocabulary item here. Click save when you're done.
                                     </DialogDescription>
                                 </DialogHeader>
-                              <VocabularyDialog></VocabularyDialog>
+                              <VocabularyDialog vocabulary={vocabulary} ></VocabularyDialog>
                             </DialogContent>
                         </Dialog>
                         <Button

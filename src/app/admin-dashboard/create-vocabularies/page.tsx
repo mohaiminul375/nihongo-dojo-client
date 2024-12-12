@@ -26,13 +26,7 @@ type Inputs = {
     definition: string;
     admin_email: string;
 }
-// type Vocabulary = {
-//     term: string;
-//     definition: string;
-//     lesson_no: number;
-//     createAt: string;
-//     // Add any other required fields here
-// };
+
 // lesson type
 interface Lessons {
     lesson_no: number;
