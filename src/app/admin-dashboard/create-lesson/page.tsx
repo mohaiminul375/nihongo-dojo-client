@@ -2,11 +2,11 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useAuth } from '@/hooks/useAuth';
 import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { useCreateLesson } from './api/route';
+import { useUser } from '@/AuthProvider/UserContext';
 type Inputs = {
     lesson_name: string;
     lesson_no: number | number;
@@ -14,7 +14,7 @@ type Inputs = {
 }
 const Page = () => {
     const createLesson = useCreateLesson();
-    const user = useAuth()
+    const { user } = useUser()
     const {
         register,
         handleSubmit,

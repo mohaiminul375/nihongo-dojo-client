@@ -4,12 +4,12 @@ import {
     CardFooter,
     CardHeader,
 } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+// import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const LessonCard = ({ lesson }) => {
-    const { _id, lesson_no, lesson_name, vocabulary_count } = lesson;
+    const {  lesson_no, lesson_name, vocabulary_count } = lesson;
     return (
         <Card className="md:w-[300px]">
             <CardHeader className="pb-2">

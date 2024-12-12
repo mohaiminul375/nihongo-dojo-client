@@ -1,14 +1,30 @@
-import { createContext, useState, useEffect, useContext } from 'react';
+import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import axios from 'axios';
+interface User {
+    id?: string;
+    email?: string;
+    name?: string;
+    role?: string;
+    img?: string;
+}
+
+interface UserContextType {
+    user?: User | null;
+    loading?: boolean;
+    error?: string | null;
+}
+
+
+
 
 // Create the context
-const UserContext = createContext(null);
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
-// The provider component
-export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
+export const UserProvider = ({ children }: { children: ReactNode }) => {
+    const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
+
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -19,7 +35,7 @@ export const UserProvider = ({ children }) => {
             }
 
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_LOCAL}/user`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

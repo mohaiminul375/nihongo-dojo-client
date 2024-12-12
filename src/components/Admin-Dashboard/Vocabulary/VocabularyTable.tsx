@@ -1,5 +1,4 @@
 'use client'
-
 import { useDeleteVocabulary } from "@/app/admin-dashboard/all-vocabularies/api/route";
 import { Button } from "@/components/ui/button";
 import {

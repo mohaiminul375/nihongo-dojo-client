@@ -4,7 +4,7 @@ import LessonCard from "@/components/Admin-Dashboard/LessonUser/LessonCard";
 import { useGetLessonsUser } from "./api/route";
 
 const Page = () => {
-    const { data: lessons = [], isPending, isError, error } = useGetLessonsUser();
+    const { data: lessons = [], isPending } = useGetLessonsUser();
     if (isPending) {
         return <p>loading.....</p>
     }

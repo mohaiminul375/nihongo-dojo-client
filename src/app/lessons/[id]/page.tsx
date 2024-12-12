@@ -22,7 +22,7 @@ const Page = () => {
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();
-    const { data: lessonContent = {}, isPending, isError, error } = useGetLessonsContent(id, currentPg);
+    const { data: lessonContent = {}, isPending} = useGetLessonsContent(id, currentPg);
     const { width, height } = useWindowSize(); // Get window size for Confetti
 
     if (isPending) {

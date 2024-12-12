@@ -12,9 +12,9 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import toast from 'react-hot-toast';
-// import { useCreateVocabulary } from './api/route';
 import { useCreateVocabulary } from './api/route';
-import { useAuth } from '@/hooks/useAuth';
+import { useUser } from '@/AuthProvider/UserContext';
+
 type Inputs = {
     word: string;
     pronunciation: string;
@@ -78,7 +78,7 @@ const lessons: Lessons[] = [
 ]
 // Main page start form here
 const Page = () => {
-    const user = useAuth();
+    const user = useUser();
     const createVocabulary = useCreateVocabulary()
     const [lesson, setLesson] = useState('');
     console.log(lesson)

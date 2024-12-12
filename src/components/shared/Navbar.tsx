@@ -5,7 +5,6 @@ import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from "@/compon
 import Image from "next/image";
 import logo from "../../../public/logo.webp";
 import { usePathname } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
 import {
     Avatar,
     AvatarFallback,
@@ -73,7 +72,7 @@ export default function Navbar() {
             </div>
 
             {/* lLogin button*/}
-            {/* {
+            {
                 user ? <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
@@ -97,7 +96,7 @@ export default function Navbar() {
                         </Link>
 
                     </div>
-            } */}
+            }
 
             {/* Mobile Menu */}
             <Sheet>

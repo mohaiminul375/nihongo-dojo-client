@@ -15,7 +15,6 @@ const LessonDialog = ({ lesson }) => {
     const {
         register,
         handleSubmit,
-        setValue,
         // watch,
         // formState: { errors },
     } = useForm<Inputs>()
@@ -26,7 +25,7 @@ const LessonDialog = ({ lesson }) => {
             if (update_lesson.lesson_no <= 0) {
                 return toast.error('please provide a valid lesson no')
             }
-            const res = await updateLesson.mutateAsync(update_lesson)
+            await updateLesson.mutateAsync(update_lesson)
             // console.log(res)
         } else {
             toast.error('something wrong in update number')

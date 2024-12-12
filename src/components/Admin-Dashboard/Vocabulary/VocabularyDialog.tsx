@@ -1,8 +1,7 @@
-import { useCreateVocabulary } from '@/app/admin-dashboard/create-vocabularies/api/route';
+// import { useCreateVocabulary } from '@/app/admin-dashboard/create-vocabularies/api/route';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useAuth } from '@/hooks/useAuth';
 import {
     Select,
     SelectContent,

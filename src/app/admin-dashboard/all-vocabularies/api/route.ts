@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 interface Vocabulary {
-    id: string;
+    _id: string;
     word: string;
     meaning: string;
     lesson_no: string;

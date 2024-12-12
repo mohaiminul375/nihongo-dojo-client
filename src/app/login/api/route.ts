@@ -1,3 +1,4 @@
+'use client'
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -17,7 +18,7 @@ export const useUserLogin = () => {
                 console.log(data)
                 toast.success('Login successfully');
                 localStorage.setItem('token', data?.token);
-                // router.push('/')
+                router.push('/')
 
             }
         },
