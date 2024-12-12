@@ -19,6 +19,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useUser } from "@/AuthProvider/UserContext";
 const navItems = [
     {
         title: 'Home',
@@ -41,8 +42,9 @@ const navItems = [
 export default function Navbar() {
     const pathname = usePathname()
     console.log(pathname)
-    const user = useAuth();
-    console.log(user)
+    const { user } = useUser()
+    console.log(user, 'from navbar')
+    // console.log(user)
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
             {/* Logo */}
@@ -71,7 +73,7 @@ export default function Navbar() {
             </div>
 
             {/* lLogin button*/}
-            {
+            {/* {
                 user ? <DropdownMenu>
                     <DropdownMenuTrigger>
                         <Avatar>
@@ -95,7 +97,7 @@ export default function Navbar() {
                         </Link>
 
                     </div>
-            }
+            } */}
 
             {/* Mobile Menu */}
             <Sheet>

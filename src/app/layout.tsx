@@ -8,6 +8,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import { UserProvider } from "@/AuthProvider/UserContext";
+// import { UserProvider } from "@/AuthProvider/UserContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -36,13 +38,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <QueryClientProvider client={queryClient}>
-          <Navbar />
-          <main className="mt-10">
-            {children}
-          </main>
-          <Toaster />
-        </QueryClientProvider>
+        <UserProvider>
+          <QueryClientProvider client={queryClient}>
+            <Navbar />
+            <main className="mt-10">
+              {children}
+            </main>
+            <Toaster />
+          </QueryClientProvider>
+        </UserProvider>
       </body>
     </html>
   );
