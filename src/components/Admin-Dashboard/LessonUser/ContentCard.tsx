@@ -1,4 +1,5 @@
 
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
 
@@ -26,13 +27,11 @@ const ContentCard = ({ content }) => {
                     <span className="font-bold">Meaning:</span> {english_meaning}
                 </p>
             </CardContent>
-            {/* <CardFooter>
-                <Link href={`/content/${word}`} className="w-full">
-                    <Button variant="default" size="lg" className="w-full">
-                        Learn More
-                    </Button>
-                </Link>
-            </CardFooter> */}
+            <CardFooter>
+
+              
+
+            </CardFooter>
         </Card>
     );
 };

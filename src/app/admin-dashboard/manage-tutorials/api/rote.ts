@@ -5,10 +5,10 @@ import toast from "react-hot-toast"
 export const useGetTutorials = () => {
     const { data, isPending, isError, error } = useQuery({
         queryFn: async () => {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson`, { withCredentials: true })
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-tutorials`, { withCredentials: true })
             return data
         },
-        queryKey: ["all-lesson"]
+        queryKey: ["all-tutorials"]
     })
     return { data, isPending, isError, error }
 }
@@ -19,13 +19,13 @@ export const useCreateTutorials = () => {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: async (embed_link) => {
-            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson`, { embed_link });
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-tutorials`, { embed_link });
             return data
         },
         onSuccess: (data) => {
             if (data.insertedId) {
                 toast.success('new video Added')
-                queryClient.invalidateQueries({ queryKey: ['all-lesson'] })
+                queryClient.invalidateQueries({ queryKey: ['all-tutorials'] })
             }
         },
         onError: (error) => {
