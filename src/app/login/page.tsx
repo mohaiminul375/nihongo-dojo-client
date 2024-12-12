@@ -32,7 +32,7 @@ const Login = () => {
     return (
         <section>
             <div className="border-2 rounded-md md:max-w-[500px] mx-auto bg-[#29274d] text-white p-5 py-20">
-                <h2 className="text-center font-bold text-2xl mb-6">Log In</h2>
+                <h2 className="text-center font-bold text-2xl mb-6">Log In </h2>
 
                 {/* Form */}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
