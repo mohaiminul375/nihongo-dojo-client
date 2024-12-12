@@ -1,5 +1,5 @@
 'use client'
-import { useCreateTutorials } from "@/app/(Admin Dashboard)/admin-dashboard/manage-tutorials/api/rote";
+import { useCreateTutorials } from "@/app/admin-dashboard/manage-tutorials/api/rote";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 

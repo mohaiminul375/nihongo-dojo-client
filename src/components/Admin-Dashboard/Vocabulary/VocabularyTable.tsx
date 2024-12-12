@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 
 const VocabularyTable = ({ vocabulary, idx }) => {
-    const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
+    const { word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
     return (
         <TableRow>
             <TableCell>{idx + 1}</TableCell>

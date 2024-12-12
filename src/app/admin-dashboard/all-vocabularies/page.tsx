@@ -68,7 +68,9 @@ const lessons: Lessons[] = [
 const Page = () => {
     const [lesson, setLesson] = useState('')
     console.log(lesson)
-    const { data: vocabularies, isPending, isError, error } = useGetVocabulariesAdmin(lesson);
+    const { data: vocabularies, isPending,
+        //  isError, error 
+    } = useGetVocabulariesAdmin(lesson);
     if (isPending) {
         return <p>loading</p>
     }

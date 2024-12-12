@@ -1,5 +1,5 @@
 'use client';
-import { useGetTutorials } from '../(Admin Dashboard)/admin-dashboard/manage-tutorials/api/rote';
+import { useGetTutorials } from '../admin-dashboard/manage-tutorials/api/rote';
 
 const Page = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();

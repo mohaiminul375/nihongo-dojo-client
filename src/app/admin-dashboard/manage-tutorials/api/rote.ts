@@ -43,6 +43,7 @@ export const useDeleteTutorial = () => {
             return data;
         },
         onSuccess: (data) => {
+            console.log(data)
             queryClient.invalidateQueries({ queryKey: ['all-lesson'] })
         },
         onError: (error) => {

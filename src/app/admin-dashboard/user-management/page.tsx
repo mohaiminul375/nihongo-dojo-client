@@ -6,12 +6,14 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import { useGetUsers } from "./api/route"
 import UsersTableData from "@/components/Admin-Dashboard/User/UsersTableData";
 
 export default function UserTable() {
-    const { data: users = [], isPending, isError, error } = useGetUsers();
+    const { data: users = [], isPending,
+        //  isError, error 
+        } = useGetUsers();
     if (isPending) {
         return <p>loading</p>
     }

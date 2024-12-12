@@ -12,6 +12,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import toast from 'react-hot-toast';
+// import { useCreateVocabulary } from './api/route';
 import { useCreateVocabulary } from './api/route';
 type Inputs = {
     word: string;
@@ -20,12 +21,22 @@ type Inputs = {
     english_meaning: string;
     createAt: string;
     lesson_no: number | string;
+    term: string;
+    definition: string;
 }
+// type Vocabulary = {
+//     term: string;
+//     definition: string;
+//     lesson_no: number;
+//     createAt: string;
+//     // Add any other required fields here
+// };
 // lesson type
 interface Lessons {
     lesson_no: number;
     lesson_name: string | number;
 }
+
 // lessons array
 const lessons: Lessons[] = [
     {
@@ -81,7 +92,7 @@ const Page = () => {
         reset,
         setValue,
         // watch,
-        formState: { errors },
+        // formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (vocabulary) => {
         if (typeof vocabulary.lesson_no === 'string') {
