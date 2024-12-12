@@ -84,7 +84,10 @@ const Page = () => {
             </div>
             {/* Table */}
             <div className="md:max-w-6xl mx-auto text-white">
-                <div className="flex justify-end p-2">
+                <div className="flex justify-between p-2">
+                    <div className="font-semibold">
+                        Total Vocabulary:{vocabularies?.length}
+                    </div>
                     <Select
                         onValueChange={(value) => {
                             setLesson(value)
@@ -121,7 +124,7 @@ const Page = () => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {vocabularies.map((vocabulary, index) => (
+                            {vocabularies?.map((vocabulary, index) => (
                                 <VocabularyTable
                                     key={vocabulary._id}
                                     vocabulary={vocabulary}

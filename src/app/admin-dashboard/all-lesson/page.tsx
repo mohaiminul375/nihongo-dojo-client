@@ -2,7 +2,7 @@
 
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useGetLessons } from "./api/route";
-import LessonTable from "@/app/lessons/LessonTable";
+import LessonTable from "@/components/Admin-Dashboard/Lessoon/LessonTable";
 
 const Page = () => {
     const { data: lessons = [], isPending, isError, error } = useGetLessons();

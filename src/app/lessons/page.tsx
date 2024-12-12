@@ -1,9 +1,35 @@
+'use client'
 
+import LessonCard from "@/components/Admin-Dashboard/LessonUser/LessonCard";
+import { useGetLessonsUser } from "./api/route";
 
 const Page = () => {
+    const { data: lessons = [], isPending, isError, error } = useGetLessonsUser();
+    if (isPending) {
+        return <p>loading.....</p>
+    }
+    console.log(lessons)
     return (
         <section>
-            lesson
+            {/* Heading */}
+            <div className="text-center my-10">
+                <h2 className="text-3xl text-white font-semibold">Explore Your Lessons</h2>
+                <p className="text-gray-400 mt-2 md:w-1/2 mx-auto">
+                    Browse through all the lessons, learn new vocabulary, and track your progress.
+                    Click on any lesson to dive deeper into its content and expand your knowledge.
+                </p>
+            </div>
+            {/* Lesson Section */}
+            <div className="mt-19">
+                <div className="grid md:grid-cols-4 gap-5">
+                    {
+                        lessons?.map((lesson) => <LessonCard
+                            key={lesson._id}
+                            lesson={lesson}
+                        ></LessonCard>)
+                    }
+                </div>
+            </div>
         </section>
     );
 };

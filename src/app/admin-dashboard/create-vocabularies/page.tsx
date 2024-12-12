@@ -14,6 +14,7 @@ import {
 import toast from 'react-hot-toast';
 // import { useCreateVocabulary } from './api/route';
 import { useCreateVocabulary } from './api/route';
+import { useAuth } from '@/hooks/useAuth';
 type Inputs = {
     word: string;
     pronunciation: string;
@@ -23,6 +24,7 @@ type Inputs = {
     lesson_no: number | string;
     term: string;
     definition: string;
+    admin_email: string;
 }
 // type Vocabulary = {
 //     term: string;
@@ -36,7 +38,7 @@ interface Lessons {
     lesson_no: number;
     lesson_name: string | number;
 }
-
+// TODO: dynamic
 // lessons array
 const lessons: Lessons[] = [
     {
@@ -82,6 +84,7 @@ const lessons: Lessons[] = [
 ]
 // Main page start form here
 const Page = () => {
+    const user = useAuth();
     const createVocabulary = useCreateVocabulary()
     const [lesson, setLesson] = useState('');
     console.log(lesson)
@@ -98,6 +101,7 @@ const Page = () => {
         if (typeof vocabulary.lesson_no === 'string') {
             vocabulary.lesson_no = parseFloat(vocabulary.lesson_no);
             vocabulary.createAt = new Date().toLocaleString();
+            vocabulary.admin_email = user.email;
             console.log(vocabulary)
             // send to db
             const res = await createVocabulary.mutateAsync(vocabulary);
