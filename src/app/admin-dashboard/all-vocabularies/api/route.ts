@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 interface Vocabulary {
     id: string;
     word: string;
@@ -27,6 +28,45 @@ export const useGetVocabulariesAdmin = (lesson_no: string): UseGetVocabulariesAd
 
     return { data, isPending, isError, error };
 };
+
+// update vocabulary
+export const useUpdateVocabulary = (id: string) => {
+    console.log(id, 'id on ')
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: async ({ update_info }) => {
+            console.log(update_info, 'update info')
+            const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-vocabulary/${id}`, update_info)
+            return data;
+        },
+        mutationKey: ['update-vocabulary'],
+        onSuccess: (data) => {
+            if (data.acknowledged) {
+                toast.success('update successfully')
+            }
+            queryClient.invalidateQueries({ queryKey: ['all-vocabularies'] })
+        },
+        onError: () => {
+            toast.error('Operation failed try again later')
+        }
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // delete a vocabulary
 export const useDeleteVocabulary = () => {
     const queryClient = useQueryClient()

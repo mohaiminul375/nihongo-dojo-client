@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select"
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useUpdateVocabulary } from '@/app/admin-dashboard/all-vocabularies/api/route';
 type Inputs = {
     word: string;
     pronunciation: string;
@@ -70,21 +71,23 @@ const lessons: Lessons[] = [
     },
 ]
 const VocabularyDialog = ({ vocabulary }) => {
+
     const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
-    const user = useAuth();
+    const updateVocabulary = useUpdateVocabulary(_id)
     const [lesson, setLesson] = useState('');
     console.log(lesson)
     // react hook form
     const {
         register,
         handleSubmit,
-        reset,
         setValue,
         // watch,
         // formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = async (update_info) => {
         console.log(update_info)
+        const res = await updateVocabulary.mutateAsync({ update_info })
+        console.log(res);
 
     }
     return (
