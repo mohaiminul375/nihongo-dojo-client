@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 interface Vocabulary {
     id: string;
@@ -8,10 +8,10 @@ interface Vocabulary {
 }
 
 interface UseGetVocabulariesAdminReturn {
-    data: Vocabulary[] | undefined; // Or the appropriate type returned by the API
+    data: Vocabulary[] | undefined;
     isPending: boolean;
     isError: boolean;
-    error: unknown; // Adjust based on your error type
+    error: unknown;
 }
 
 export const useGetVocabulariesAdmin = (lesson_no: string): UseGetVocabulariesAdminReturn => {
@@ -27,3 +27,17 @@ export const useGetVocabulariesAdmin = (lesson_no: string): UseGetVocabulariesAd
 
     return { data, isPending, isError, error };
 };
+// delete a vocabulary
+export const useDeleteVocabulary = () => {
+    const queryClient = useQueryClient()
+    return useMutation({
+        mutationFn: async (id: string) => {
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-vocabulary/${id}`)
+            return data;
+        },
+        mutationKey: ['delete-vocabulary'],
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ['all-vocabularies'] })
+        }
+    })
+}
