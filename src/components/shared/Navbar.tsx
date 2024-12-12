@@ -4,8 +4,8 @@ import Link from "next/link";
 import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import Image from "next/image";
 import logo from "../../../public/logo.webp";
-import useAuth from "@/hooks/useAuth";
-import Cookies from 'js-cookie';
+import { useRouter } from 'next/router';
+import { usePathname } from "next/navigation";
 const navItems = [
     {
         title: 'Home',
@@ -26,7 +26,8 @@ const navItems = [
 ]
 // main page start
 export default function Navbar() {
-    
+    const pathname = usePathname()
+    console.log(pathname)
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
             {/* Logo */}
@@ -43,7 +44,7 @@ export default function Navbar() {
                             <NavigationMenuLink asChild key={index}>
                                 <Link
                                     href={item.path}
-                                    className="group inline-flex h-9 items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50"
+                                    className={`group text-white font-bold text-base ${pathname == item.path && 'underline shadow-2xl'}`}
                                     prefetch={false}
                                 >
                                     {item.title}
@@ -78,7 +79,7 @@ export default function Navbar() {
                             <Link
                                 key={index}
                                 href={item.path}
-                                className="flex w-full items-center py-2 text-lg font-semibold"
+                                className={`flex w-full items-center py-2 text-lg font-semibold text-white ${pathname == item.path && 'underline shadow-2xl'}`}
                                 prefetch={false}
                             >
                                 {item.title}

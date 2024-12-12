@@ -4,10 +4,10 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export const useUserLogin = () => {
-    const router = useRouter;
+    const router = useRouter();
     return useMutation({
         mutationFn: async (user_info: object) => {
-            const { data } = await axios.post(`http://localhost:5000/login`, user_info, { withCredentials: true });
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, user_info, { withCredentials: true });
             return data;
         },
         mutationKey: ['login'],
