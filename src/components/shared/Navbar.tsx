@@ -4,7 +4,6 @@ import Link from "next/link";
 import { NavigationMenu, NavigationMenuList, NavigationMenuLink } from "@/components/ui/navigation-menu";
 import Image from "next/image";
 import logo from "../../../public/logo.webp";
-import { useRouter } from 'next/router';
 import { usePathname } from "next/navigation";
 const navItems = [
     {
