@@ -7,6 +7,9 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useUserLogin } from "./api/route";
+import { useUserContext } from "@/AuthProvider/UserContext";
+import { useRouter } from "next/navigation";
+
 // types for Inputs
 type Inputs = {
     email: string;
@@ -15,8 +18,10 @@ type Inputs = {
 }
 
 const Login = () => {
+    const router = useRouter();
     const login = useUserLogin();
     // react hook form
+    // const { } = useUserContext()
     const {
         register,
         handleSubmit,
