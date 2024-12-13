@@ -1,4 +1,5 @@
 import { useGetLessonHeading } from "@/app/lessons/api/route";
+import Loading from "@/app/loading";
 
 interface PropsType {
     id: string;
@@ -7,7 +8,7 @@ const LessonHeading = ({ id }: PropsType) => {
     console.log('inside heading', id)
     const { data, isPending } = useGetLessonHeading(id);
     if (isPending) {
-        return
+        return <Loading/>
     }
     console.log(data);
     return (

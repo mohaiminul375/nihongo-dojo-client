@@ -17,6 +17,7 @@ import { useGetVocabulariesAdmin } from "./api/route";
 import VocabularyTable from "@/components/Admin-Dashboard/Vocabulary/VocabularyTable";
 import { useState } from "react";
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
+import Loading from "@/app/loading";
 // lesson type
 interface Lessons {
     lesson_no: number;
@@ -73,7 +74,7 @@ const Page = () => {
         //  isError, error 
     } = useGetVocabulariesAdmin(lesson);
     if (isPending) {
-        return <p>loading</p>
+        return <Loading />
     }
     console.log(vocabularies)
     return (

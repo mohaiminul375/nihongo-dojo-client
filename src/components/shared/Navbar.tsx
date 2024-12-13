@@ -26,7 +26,7 @@ const navItems = [
 
 export default function Navbar() {
     const pathname = usePathname();
-    const { user } = useUser(); // Fetching user data from context
+    const { user, logOut } = useUser(); // Fetching user data from context
 
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
@@ -72,12 +72,13 @@ export default function Navbar() {
                         </Avatar>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuLabel>{user.user_name}</DropdownMenuLabel>
+                        <DropdownMenuLabel>{user.user_email}</DropdownMenuLabel>
+                        <DropdownMenuLabel
+                            onClick={logOut}
+                        >LogOut</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Profile</DropdownMenuItem>
-                        <DropdownMenuItem>Billing</DropdownMenuItem>
-                        <DropdownMenuItem>Team</DropdownMenuItem>
-                        <DropdownMenuItem>Subscription</DropdownMenuItem>
+
                     </DropdownMenuContent>
                 </DropdownMenu>
             ) : (
@@ -101,7 +102,7 @@ export default function Navbar() {
                     <div className="grid gap-2 py-6">
                         {navItems.map((item, index) => {
                             if (item.title === 'Admin Dashboard' && user?.role !== 'Admin') {
-                                return null; 
+                                return null;
                             }
 
                             return (

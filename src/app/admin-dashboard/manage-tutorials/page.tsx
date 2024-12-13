@@ -4,16 +4,14 @@ import { useDeleteTutorial, useGetTutorials } from "./api/rote";
 import { Button } from "@/components/ui/button";
 import Swal from 'sweetalert2'
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
+import Loading from "@/app/loading";
 const ManageTutorials = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();
     const deleteTutorial = useDeleteTutorial()
 
     if (isPending) {
-        return (
-            <div className="flex justify-center items-center h-screen">
-                <p className="text-white text-xl">Loading...</p>
-            </div>
-        );
+        return <Loading />
+        
     }
 
     if (isError) {

@@ -9,6 +9,7 @@ import {
 import {  useGetUsers } from "./api/route"
 import UsersTableData from "@/components/Admin-Dashboard/User/UsersTableData";
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
+import Loading from "@/app/loading";
 
 
 const UserTable = () => {
@@ -17,7 +18,7 @@ const UserTable = () => {
         //  isError, error 
     } = useGetUsers();
     if (isPending) {
-        return <p>loading</p>
+        return <Loading/>
     }
  
     return (

@@ -17,6 +17,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import withAuth from '@/AuthProvider/withAuth';
+import Loading from '@/app/loading';
 
 const Page = () => {
     const router = useRouter();
@@ -27,7 +28,7 @@ const Page = () => {
     const { width, height } = useWindowSize(); // Get window size for Confetti
 
     if (isPending) {
-        return <p>Loading...</p>;
+        return <Loading/>
     }
 
     const handleComplete = () => {

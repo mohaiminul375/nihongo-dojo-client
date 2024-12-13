@@ -57,9 +57,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
         fetchUser();
     }, [router]); // Make sure to add router to dependency array
-
+    const logOut = () => {
+        localStorage.removeItem('token');
+        setUser(null)
+    }
     return (
-        <UserContext.Provider value={{ user, loading, error }}>
+        <UserContext.Provider value={{ user, loading, error, logOut }}>
             {children}
         </UserContext.Provider>
     );

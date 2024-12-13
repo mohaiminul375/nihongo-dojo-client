@@ -3,11 +3,12 @@
 import LessonCard from "@/components/Admin-Dashboard/LessonUser/LessonCard";
 import { useGetLessonsUser } from "./api/route";
 import withAuth from "@/AuthProvider/withAuth";
+import Loading from "../loading";
 
 const Page = () => {
     const { data: lessons = [], isPending } = useGetLessonsUser();
     if (isPending) {
-        return <p>loading.....</p>
+        return <Loading/>
     }
     console.log(lessons)
     return (
