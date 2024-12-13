@@ -2,23 +2,20 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useUser } from './UserContext';
 
-
 const withAuth = (WrappedComponent) => {
     return (props) => {
         const { user, loading } = useUser();
         const router = useRouter();
 
         useEffect(() => {
-            if (!loading) {
-                if (!user) {
-                    router.push('/login');
-                }
+            if (!loading && !user) {
+                router.push('/login');
             }
-        }, [user, loading, router]);
+        },
+            [loading, user]);
 
-
-        if (loading || !user) {
-            return <div>Loading...</div>;
+        if (loading) {
+            return <div>Loading...</div>; // Display loading state
         }
 
         return <WrappedComponent {...props} user={user} />;

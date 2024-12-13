@@ -42,7 +42,7 @@ export const useUpdateStatus = () => {
             return data;
         },
         mutationKey: ['update-role'],
-        onSuccess: (data) => {
+        onSuccess: () => {
 
             queryClient.invalidateQueries({ queryKey: ['all-users'] })
         }, onError: () => {

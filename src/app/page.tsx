@@ -3,7 +3,7 @@
 import { useUser } from "@/AuthProvider/UserContext";
 import { useRouter } from "next/navigation"
 
-export default function page() {
+export default function Page() {
   const { user, loading } = useUser();
 
   const router = useRouter();

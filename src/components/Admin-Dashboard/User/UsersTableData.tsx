@@ -12,7 +12,7 @@ import { Ban } from "lucide-react";
 import Swal from "sweetalert2";
 import { useDeleteUser, useUpdateRole, useUpdateStatus } from "@/app/admin-dashboard/user-management/api/route";
 import toast from "react-hot-toast";
-import { useState } from "react";
+
 
 const UsersTableData = ({ user, idx }) => {
 

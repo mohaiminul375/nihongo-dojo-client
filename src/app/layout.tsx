@@ -1,5 +1,4 @@
 'use client'
-import localFont from "next/font/local";
 import { Roboto } from 'next/font/google';
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
@@ -11,16 +10,7 @@ import {
 import { UserProvider } from "@/AuthProvider/UserContext";
 // import { UserProvider } from "@/AuthProvider/UserContext";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
 const roboto = Roboto({
   subsets: ['latin'], // Add subsets as needed
   weight: ['400', '700'], // Specify font weights
