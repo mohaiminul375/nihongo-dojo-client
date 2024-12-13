@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 const LessonCard = ({ lesson }) => {
     const {  lesson_no, lesson_name, vocabulary_count } = lesson;
     return (
-        <Card className="md:w-[300px]">
+        <Card className="md:w-[300px] lg:w-[250]">
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold">Lesson {lesson_no}</span>

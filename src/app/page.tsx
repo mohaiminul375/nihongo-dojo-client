@@ -1,7 +1,7 @@
 'use client'
-
 import { useUser } from "@/AuthProvider/UserContext";
 import { useRouter } from "next/navigation"
+import Loading from "./loading";
 
 export default function Page() {
   const { user, loading } = useUser();
@@ -9,12 +9,12 @@ export default function Page() {
   const router = useRouter();
 
   if (loading) {
-    return
+    return <Loading />
   }
-  console.log(user)
   if (!user) {
-    router.push('/login')
+    return router.push('/login')
   }
+  // console.log(user)
   if (user.role == 'User') {
     router.push('/lessons')
   }

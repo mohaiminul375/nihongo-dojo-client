@@ -84,7 +84,7 @@ const Page = () => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="md:w-1/2 center bg-green-700 text-white"
+                    className="w-full md:w-1/2 center bg-green-700 text-white"
                     onClick={handleComplete} // Trigger handleComplete on click
                 >
                     Complete

@@ -23,7 +23,7 @@ const Page = () => {
             </div>
             {/* Lesson Section */}
             <div className="mt-19">
-                <div className="grid md:grid-cols-4 gap-5">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
                         lessons?.map((lesson) => <LessonCard
                             key={lesson._id}

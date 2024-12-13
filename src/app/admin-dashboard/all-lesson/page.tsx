@@ -3,11 +3,12 @@ import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components
 import { useGetLessons } from "./api/route";
 import LessonTable from "@/components/Admin-Dashboard/Lessoon/LessonTable";
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
+import Loading from "@/app/loading";
 
 const Page = () => {
     const { data: lessons = [], isPending } = useGetLessons();
     if (isPending) {
-        return <p>loading</p>
+        return <Loading />
     }
     console.log(lessons);
     return (
