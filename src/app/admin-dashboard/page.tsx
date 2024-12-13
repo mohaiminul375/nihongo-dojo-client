@@ -9,7 +9,7 @@ import withAdminAuth from '@/AuthProvider/withAdminAuth';
 
 const Dashboard = () => {
     return (
-        <section>
+        <section>            
             <div className=''>
                 <h2 className='text-center text-2xl font-bold text-white'>Welcome To Admin Dashboard</h2>
             </div>

@@ -6,18 +6,20 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-// import { Button } from "@/components/ui/button"
-import { useGetUsers } from "./api/route"
+import {  useGetUsers } from "./api/route"
 import UsersTableData from "@/components/Admin-Dashboard/User/UsersTableData";
+import withAdminAuth from "@/AuthProvider/withAdminAuth";
 
-export default function UserTable() {
+
+const UserTable = () => {
+
     const { data: users = [], isPending,
         //  isError, error 
-        } = useGetUsers();
+    } = useGetUsers();
     if (isPending) {
         return <p>loading</p>
     }
-    console.log(users)
+ 
     return (
         <section className=" mt-10">
             {/* Header Section */}
@@ -53,4 +55,4 @@ export default function UserTable() {
         </section>
     )
 }
-
+export default withAdminAuth(UserTable);

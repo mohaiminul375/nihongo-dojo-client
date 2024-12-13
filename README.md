@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nihongo-Dojo
 
-## Getting Started
+- A Japanese Language learning platform
 
-First, run the development server:
+# Live_site: https://nihongo-dojo-client.vercel.app
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Run the Project Locally
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the Repository**:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```sh
+     https://github.com/mohaiminul375/nihongo-dojo-client
+     cd nihongo-dojo-client
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install Dependencies**:
 
-## Learn More
+   ```sh
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Set Up Environment Variables**: Create a `.env.local` file in the root directory and add the necessary environment variables. (**Important!**)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the Application**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```sh
+   npm run dev -- --host
+   ```
 
-## Deploy on Vercel
+5. **Access the Site**: Open your browser and go to `http://localhost:3000.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# website features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Default User:
+- user can access all lesson
+- user can access all tutorials
+
+- Admin:
+- Admin Dashboard: Access a dedicated dashboard with comprehensive management features.
+- here admin can see some information
+- Admin Can Create, Update, Delete lessons
+- Admin Can Create, Update, Delete tutorials
+- Admin can change role any user can delete and ban
+
+
+# Access Info
+
+- Admin email: admin1@nihongo.com
+- Admin password: admin@A1
+
+
+
+# Technology
+
+- HTML, CSS, Next.js, Typescript (front-end)
+- Express.js, MongoDB(back-end)
+- Custom Auth
+
+
+# npm and Packages
+
+- Next.js
+- Typescript
+- ShadCn
+- RadixUi
+- Lucide (icon)
+- React hook form
+- sweet alert 2
+- npm i react-confetti
+- axios
+
+# npm and Packages
+- https://github.com/mohaiminul375/nihongo-dojo-server
