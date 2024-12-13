@@ -14,6 +14,7 @@ import {
 import toast from 'react-hot-toast';
 import { useCreateVocabulary } from './api/route';
 import { useUser } from '@/AuthProvider/UserContext';
+import withAdminAuth from '@/AuthProvider/withAdminAuth';
 
 type Inputs = {
     word: string;
@@ -192,4 +193,4 @@ const Page = () => {
     )
 }
 
-export default Page;
+export default withAdminAuth(Page);

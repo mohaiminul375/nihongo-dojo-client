@@ -3,6 +3,7 @@ import AddTutorials from "@/components/Admin-Dashboard/Tutorials/AddTutorials";
 import { useDeleteTutorial, useGetTutorials } from "./api/rote";
 import { Button } from "@/components/ui/button";
 import Swal from 'sweetalert2'
+import withAdminAuth from "@/AuthProvider/withAdminAuth";
 const ManageTutorials = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();
     const deleteTutorial = useDeleteTutorial()
@@ -99,4 +100,4 @@ const ManageTutorials = () => {
     );
 };
 
-export default ManageTutorials;
+export default withAdminAuth(ManageTutorials);

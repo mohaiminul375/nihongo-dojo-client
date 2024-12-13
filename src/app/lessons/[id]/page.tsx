@@ -16,13 +16,14 @@ import {
 } from '@/components/ui/pagination';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import withAuth from '@/AuthProvider/withAuth';
 
 const Page = () => {
     const router = useRouter();
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();
-    const { data: lessonContent = {}, isPending} = useGetLessonsContent(id, currentPg);
+    const { data: lessonContent = {}, isPending } = useGetLessonsContent(id, currentPg);
     const { width, height } = useWindowSize(); // Get window size for Confetti
 
     if (isPending) {
@@ -94,4 +95,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAuth(Page);

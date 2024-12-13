@@ -16,6 +16,7 @@ import {
 import { useGetVocabulariesAdmin } from "./api/route";
 import VocabularyTable from "@/components/Admin-Dashboard/Vocabulary/VocabularyTable";
 import { useState } from "react";
+import withAdminAuth from "@/AuthProvider/withAdminAuth";
 // lesson type
 interface Lessons {
     lesson_no: number;
@@ -141,4 +142,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAdminAuth(Page);

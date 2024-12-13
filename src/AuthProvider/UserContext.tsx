@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
+
 interface User {
     id?: string;
     email?: string;
@@ -14,9 +16,6 @@ interface UserContextType {
     error?: string | null;
 }
 
-
-
-
 // Create the context
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
@@ -24,7 +23,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-
+    const router = useRouter();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -41,6 +40,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                     },
                 });
                 setUser(response.data.user);
+
+                // Redirect based on the user's role
+                if (response.data.user?.role === 'user') {
+                    router.push('/lessons'); // Redirect to lessons page
+                } else if (response.data.user?.role === 'admin') {
+                    router.push('/admin-dashboard'); // Redirect to admin dashboard
+                }
             } catch (err) {
                 setError('Error fetching user data');
                 console.error(err);
@@ -50,7 +56,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
         };
 
         fetchUser();
-    }, []);
+    }, [router]); // Make sure to add router to dependency array
 
     return (
         <UserContext.Provider value={{ user, loading, error }}>

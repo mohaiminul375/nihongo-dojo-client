@@ -2,6 +2,7 @@
 
 import LessonCard from "@/components/Admin-Dashboard/LessonUser/LessonCard";
 import { useGetLessonsUser } from "./api/route";
+import withAuth from "@/AuthProvider/withAuth";
 
 const Page = () => {
     const { data: lessons = [], isPending } = useGetLessonsUser();
@@ -34,4 +35,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAuth(Page);

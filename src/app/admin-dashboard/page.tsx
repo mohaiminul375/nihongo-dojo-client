@@ -1,9 +1,11 @@
+'use client'
 import Lesson from '@/components/Admin-Dashboard/Lessoon/Lesson';
 import Overview from '@/components/Admin-Dashboard/Overview/Overview';
 import Users from '@/components/Admin-Dashboard/User/Users';
 import Tutorials from '@/components/Admin-Dashboard/Tutorials/Tutorials';
 import React from 'react';
 import Vocabulary from '@/components/Admin-Dashboard/Vocabulary/Vocabulary';
+import withAdminAuth from '@/AuthProvider/withAdminAuth';
 
 const Dashboard = () => {
     return (
@@ -38,4 +40,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default withAdminAuth(Dashboard);

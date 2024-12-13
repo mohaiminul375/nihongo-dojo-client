@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { useCreateLesson } from './api/route';
 import { useUser } from '@/AuthProvider/UserContext';
+import withAdminAuth from '@/AuthProvider/withAdminAuth';
 type Inputs = {
     lesson_name: string;
     lesson_no: number | number;
@@ -79,4 +80,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAdminAuth(Page);

@@ -2,6 +2,7 @@
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useGetLessons } from "./api/route";
 import LessonTable from "@/components/Admin-Dashboard/Lessoon/LessonTable";
+import withAdminAuth from "@/AuthProvider/withAdminAuth";
 
 const Page = () => {
     const { data: lessons = [], isPending } = useGetLessons();
@@ -44,4 +45,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAdminAuth(Page);
