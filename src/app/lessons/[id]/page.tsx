@@ -1,6 +1,6 @@
 'use client';
 import { useParams } from 'next/navigation';
-import { useGetLessonHeading, useGetLessonsContent, useUpdateProgress } from '../api/route';
+import { useGetLessonHeading, useGetLessonsContent, useGetProgress, useUpdateProgress } from '../api/route';
 import LessonHeading from '@/components/Admin-Dashboard/LessonUser/LessonHeading';
 import ContentCard from '@/components/Admin-Dashboard/LessonUser/ContentCard';
 import { useState } from 'react';
@@ -19,6 +19,7 @@ import { useRouter } from 'next/navigation';
 import withAuth from '@/AuthProvider/withAuth';
 import Loading from '@/app/loading';
 import { useUser } from '@/AuthProvider/UserContext';
+import Link from 'next/link';
 
 const Page = () => {
     const updateProgress = useUpdateProgress()
@@ -29,11 +30,14 @@ const Page = () => {
     const { id } = useParams();
     const { data: lessonContent = {}, isPending } = useGetLessonsContent(id, currentPg);
     const { data: lesson } = useGetLessonHeading(id as string);
+    const { data: progress, } = useGetProgress(user?.email);
     const { width, height } = useWindowSize(); // Get window size for Confetti
     if (isPending) {
         return <Loading />
     }
-
+    const isCompleted = progress.lessons.some((les) => les.lesson_no === lesson.lesson_no);
+    console.log(isCompleted)
+    // handle completed
     const handleComplete = async () => {
         console.log('handle complete')
         const info = {
@@ -96,14 +100,24 @@ const Page = () => {
                 className={`px-2 my-3 flex justify-center ${currentPg !== lessonContent.totalCount && 'hidden'
                     }`}
             >
-                <Button
-                    variant="ghost"
-                    size="icon"
-                    className="w-full md:w-1/2 center bg-green-700 text-white"
-                    onClick={handleComplete} // Trigger handleComplete on click
-                >
-                    Complete
-                </Button>
+                {
+                    isCompleted ? <Link className='w-full' href='/lessons'>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="w-full md:w-1/2 mx-auto center bg-green-700 text-white"
+                        >
+                            Completed Back to lessons
+                        </Button>
+                    </Link> : <Button
+                        variant="ghost"
+                        size="icon"
+                        className="w-full md:w-1/2 center bg-green-700 text-white"
+                        onClick={handleComplete} // Trigger handleComplete on click
+                    >
+                        Complete
+                    </Button>
+                }
             </div>
             {/* Confetti Animation */}
             {showConfetti && <Confetti width={width} height={height} />}

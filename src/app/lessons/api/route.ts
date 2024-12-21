@@ -50,7 +50,7 @@ export const useUpdateProgress = () => {
 export const useGetProgress = (email: string) => {
     const { data, isPending, isError, error } = useQuery({
         queryFn: async () => {
-            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_LOCAL}/progress/${email}`)
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/progress/${email}`)
             return data;
         },
         queryKey: ['progress']
