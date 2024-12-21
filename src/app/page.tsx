@@ -11,6 +11,7 @@ export default function Page() {
   if (loading) {
     return <Loading />
   }
+
   if (!user) {
     return router.push('/login')
   }
@@ -21,5 +22,8 @@ export default function Page() {
   if (user.role == 'Admin') {
     router.push('/admin-dashboard')
   }
+
+
+
 
 }

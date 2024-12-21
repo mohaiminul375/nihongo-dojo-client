@@ -1,11 +1,11 @@
 'use client'
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 export const useUserLogin = () => {
-    const router = useRouter();
+    // const router = useRouter();
     return useMutation({
         mutationFn: async (user_info: object) => {
             const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/login`, user_info, { withCredentials: true });
@@ -18,7 +18,8 @@ export const useUserLogin = () => {
                 console.log(data)
                 toast.success('Login successfully');
                 localStorage.setItem('token', data?.token);
-                router.push('/')
+                // router.push('/')
+                location.reload()
 
             }
         },
