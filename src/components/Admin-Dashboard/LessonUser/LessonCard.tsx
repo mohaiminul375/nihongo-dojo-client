@@ -3,10 +3,16 @@ import {
     CardContent,
     CardFooter,
     CardHeader,
+
 } from "@/components/ui/card"
 // import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/AuthProvider/UserContext";
+import { useGetProgress } from "@/app/lessons/api/route";
+import Loading from "@/app/loading";
+import { Badge } from "@/components/ui/badge";
+// import {  } from "lucide-react";
 interface CardProp {
     lesson_no: number,
     lesson_name: string,
@@ -14,15 +20,25 @@ interface CardProp {
 }
 
 const LessonCard = ({ lesson }: CardProp) => {
+    const { user } = useUser()
     const { lesson_no, lesson_name, vocabulary_count } = lesson;
+    const { data, isPending } = useGetProgress(user?.email);
+    if (isPending) {
+        return <Loading />
+    }
+    const isCompleted = data.lessons.some(lesson => lesson.lesson_no === lesson_no);
+    console.log(isCompleted)
     return (
         <Card className="xl:w-[300px] lg:w-[250]">
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold">Lesson {lesson_no}</span>
-                    {/* <Badge variant={isCompleted ? "success" : "secondary"}>
+                    <Badge variant={isCompleted ? "default" : "secondary"}>
                         {isCompleted ? "Completed" : "Incomplete"}
-                    </Badge> */}
+                    </Badge>
+                    {
+
+                    }
                 </div>
             </CardHeader>
             <CardContent>
