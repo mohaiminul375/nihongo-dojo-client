@@ -7,11 +7,16 @@ import {
 // import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+interface CardProp {
+    lesson_no: number,
+    lesson_name: string,
+    Vocabulary_count: string,
+}
 
-const LessonCard = ({ lesson }) => {
-    const {  lesson_no, lesson_name, vocabulary_count } = lesson;
+const LessonCard = ({ lesson }: CardProp) => {
+    const { lesson_no, lesson_name, vocabulary_count } = lesson;
     return (
-        <Card className="md:w-[300px] lg:w-[250]">
+        <Card className="xl:w-[300px] lg:w-[250]">
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold">Lesson {lesson_no}</span>

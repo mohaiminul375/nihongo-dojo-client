@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import axios from "axios";
 
 export const useGetLessonsUser = () => {
@@ -36,4 +36,14 @@ export const useGetLessonHeading = (lesson_no: string | string[]) => {
         queryKey: ['lessons-heading']
     })
     return { data, isPending, isError, error }
+}
+// Update Progress
+export const useUpdateProgress = () => {
+    return useMutation({
+        mutationFn: async (newProgress: object) => {
+            const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/progress`, newProgress)
+            return data;
+        },
+        mutationKey: ['progress']
+    })
 }

@@ -28,7 +28,7 @@ interface TableProps {
     idx: number,
     vocabulary: Vocabularies;
 }
-const VocabularyTable = ({ vocabulary, idx }: TableProps) => {
+const   VocabularyTable = ({ vocabulary, idx }: TableProps) => {
     const deleteVocabulary = useDeleteVocabulary();
     const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
     const [isDialogOpen, setIsDialogOpen] = useState(false);

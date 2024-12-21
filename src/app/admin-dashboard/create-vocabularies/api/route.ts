@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 interface Lessons {
+    lesson: object
     lesson_no: number;
     lesson_name: string | number;
 }

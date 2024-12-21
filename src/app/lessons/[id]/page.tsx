@@ -1,6 +1,6 @@
 'use client';
 import { useParams } from 'next/navigation';
-import { useGetLessonsContent } from '../api/route';
+import { useGetLessonHeading, useGetLessonsContent, useUpdateProgress } from '../api/route';
 import LessonHeading from '@/components/Admin-Dashboard/LessonUser/LessonHeading';
 import ContentCard from '@/components/Admin-Dashboard/LessonUser/ContentCard';
 import { useState } from 'react';
@@ -18,23 +18,36 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import withAuth from '@/AuthProvider/withAuth';
 import Loading from '@/app/loading';
+import { useUser } from '@/AuthProvider/UserContext';
 
 const Page = () => {
+    const updateProgress = useUpdateProgress()
     const router = useRouter();
+    const { user } = useUser()
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();
     const { data: lessonContent = {}, isPending } = useGetLessonsContent(id, currentPg);
+    const { data: lesson } = useGetLessonHeading(id as string);
     const { width, height } = useWindowSize(); // Get window size for Confetti
-
     if (isPending) {
-        return <Loading/>
+        return <Loading />
     }
 
-    const handleComplete = () => {
+    const handleComplete = async () => {
+        console.log('handle complete')
+        const info = {
+            email: user?.email,
+            lesson: {
+                lesson_no: lesson.lesson_no,
+                lesson_name: lesson.lesson_name,
+                status: 'completed'
+            }
+        }
+        const res = await updateProgress.mutateAsync(info)
+        console.log(info, 'handle complete');
+        console.log(res)
         setShowConfetti(true);
-
-        // console.log('Lesson completed successfully!');
         setTimeout(() => {
             router.push('/lessons')
             setShowConfetti(false)
@@ -51,7 +64,9 @@ const Page = () => {
             {/* Lesson Card */}
             <div className="flex justify-center">
                 {lessonContent?.data?.map((content) => (
-                    <ContentCard key={content._id} content={content}></ContentCard>
+                    <ContentCard
+
+                        key={content._id} content={content} ></ContentCard>
                 ))}
             </div>
             {/* Pagination */}
@@ -92,7 +107,7 @@ const Page = () => {
             </div>
             {/* Confetti Animation */}
             {showConfetti && <Confetti width={width} height={height} />}
-        </section>
+        </section >
     );
 };
 

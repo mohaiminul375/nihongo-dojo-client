@@ -2,13 +2,15 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 
 
 const ContentCard = ({ content }) => {
-    const { word, pronunciation, when_to_say, english_meaning } = content;
+    const { word, pronunciation, when_to_say, english_meaning, lesson_no } = content;
+    console.log(content)
     // Speaking function
     const handleSpeak = () => {
         const utterance = new SpeechSynthesisUtterance(word);
         utterance.lang = 'ja-JP'; // Japanese
         window.speechSynthesis.speak(utterance);
     }
+    // setLessonName(lesson_no)
     return (
         <Card
             onClick={handleSpeak}
@@ -27,7 +29,7 @@ const ContentCard = ({ content }) => {
             </CardContent>
             <CardFooter>
 
-              
+
 
             </CardFooter>
         </Card>
