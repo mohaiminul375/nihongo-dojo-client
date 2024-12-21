@@ -1,4 +1,4 @@
-'use cllient'
+'use client'
 import FadeLoader from "react-spinners/FadeLoader";
 const Loading = () => {
     return (

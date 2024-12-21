@@ -11,7 +11,9 @@ import {
 } from "@/components/ui/select"
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useUpdateVocabulary } from '@/app/admin-dashboard/all-vocabularies/api/route';
+import { useGetVocabulariesAdmin, useUpdateVocabulary } from '@/app/admin-dashboard/all-vocabularies/api/route';
+import Loading from '@/app/loading';
+import { useDropdownLesson } from '@/app/admin-dashboard/create-vocabularies/api/route';
 type Inputs = {
     word: string;
     pronunciation: string;
@@ -23,59 +25,50 @@ type Inputs = {
     definition: string;
     admin_email: string;
 }
-interface Lessons {
-    lesson_no: number;
-    lesson_name: string | number;
-}
-const lessons: Lessons[] = [
-    {
-        lesson_no: 1,
-        lesson_name: 'Basic Greetings'
-    },
-    {
-        lesson_no: 2,
-        lesson_name: 'Greetings and Time'
-    },
-    {
-        lesson_no: 3,
-        lesson_name: 'Common Phrases'
-    },
-    {
-        lesson_no: 4,
-        lesson_name: 'Basic Conversations'
-    },
-    {
-        lesson_no: 5,
-        lesson_name: 'Languages'
-    },
-    {
-        lesson_no: 6,
-        lesson_name: 'People and Occupations'
-    },
-    {
-        lesson_no: 7,
-        lesson_name: 'Feelings and Health'
-    },
-    {
-        lesson_no: 8,
-        lesson_name: 'Verbs and Actions'
-    },
-    {
-        lesson_no: 9,
-        lesson_name: 'Travel and Directions'
-    },
-    {
-        lesson_no: 10,
-        lesson_name: 'Adjectives'
-    },
-]
-const VocabularyDialog = ({ vocabulary }) => {
 
-    const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
-    const updateVocabulary = useUpdateVocabulary(_id)
-    const [lesson, setLesson] = useState('');
-    console.log(lesson)
-    // react hook form
+// const lessons: Lessons[] = [
+//     {
+//         lesson_no: 1,
+//         lesson_name: 'Basic Greetings'
+//     },
+//     {
+//         lesson_no: 2,
+//         lesson_name: 'Greetings and Time'
+//     },
+//     {
+//         lesson_no: 3,
+//         lesson_name: 'Common Phrases'
+//     },
+//     {
+//         lesson_no: 4,
+//         lesson_name: 'Basic Conversations'
+//     },
+//     {
+//         lesson_no: 5,
+//         lesson_name: 'Languages'
+//     },
+//     {
+//         lesson_no: 6,
+//         lesson_name: 'People and Occupations'
+//     },
+//     {
+//         lesson_no: 7,
+//         lesson_name: 'Feelings and Health'
+//     },
+//     {
+//         lesson_no: 8,
+//         lesson_name: 'Verbs and Actions'
+//     },
+//     {
+//         lesson_no: 9,
+//         lesson_name: 'Travel and Directions'
+//     },
+//     {
+//         lesson_no: 10,
+//         lesson_name: 'Adjectives'
+//     },
+// ]
+const VocabularyDialog = ({ vocabulary }) => {
     const {
         register,
         handleSubmit,
@@ -83,6 +76,15 @@ const VocabularyDialog = ({ vocabulary }) => {
         // watch,
         // formState: { errors },
     } = useForm<Inputs>()
+    const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
+    const updateVocabulary = useUpdateVocabulary(_id)
+    const [lesson, setLesson] = useState('');
+    const { data: lessons = [], isLoading } = useDropdownLesson();
+    console.log(lesson)
+    if (isLoading) {
+        return <Loading />
+    }
+    // react hook form
     const onSubmit: SubmitHandler<Inputs> = async (update_info) => {
         console.log(update_info)
         const res = await updateVocabulary.mutateAsync({ update_info })

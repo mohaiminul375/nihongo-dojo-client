@@ -41,12 +41,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
                 });
                 setUser(response.data.user);
 
-                // Redirect based on the user's role
-                if (response.data.user?.role === 'User') {
-                    router.push('/lessons'); // Redirect to lessons page
-                } else if (response.data.user?.role === 'Admin') {
-                    router.push('/admin-dashboard'); // Redirect to admin dashboard
-                }
+                
             } catch (err) {
                 setError('Error fetching user data');
                 console.error(err);

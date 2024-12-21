@@ -15,7 +15,20 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import VocabularyDialog from "./VocabularyDialog";
 
-const VocabularyTable = ({ vocabulary, idx }) => {
+interface Vocabularies {
+    _id: string,
+    word: string,
+    pronunciation: string,
+    when_to_say: string,
+    english_meaning: string,
+    lesson_no: number,
+}
+
+interface TableProps {
+    idx: number,
+    vocabulary: Vocabularies;
+}
+const VocabularyTable = ({ vocabulary, idx }: TableProps) => {
     const deleteVocabulary = useDeleteVocabulary();
     const { _id, word, pronunciation, when_to_say, english_meaning, lesson_no } = vocabulary;
     const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -62,7 +75,7 @@ const VocabularyTable = ({ vocabulary, idx }) => {
                 <TableCell>{lesson_no}</TableCell>
                 <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
-                        <Dialog  open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                             <DialogTrigger asChild>
                                 <Button variant="outline" size="sm">
                                     Edit
@@ -75,7 +88,7 @@ const VocabularyTable = ({ vocabulary, idx }) => {
                                         Make changes to the vocabulary item here. Click save when you're done.
                                     </DialogDescription>
                                 </DialogHeader>
-                              <VocabularyDialog vocabulary={vocabulary} ></VocabularyDialog>
+                                <VocabularyDialog vocabulary={vocabulary} ></VocabularyDialog>
                             </DialogContent>
                         </Dialog>
                         <Button

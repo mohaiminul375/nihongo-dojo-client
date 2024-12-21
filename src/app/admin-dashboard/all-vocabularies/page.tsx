@@ -18,54 +18,14 @@ import VocabularyTable from "@/components/Admin-Dashboard/Vocabulary/VocabularyT
 import { useState } from "react";
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
 import Loading from "@/app/loading";
+import { useDropdownLesson } from "../create-vocabularies/api/route";
 // lesson type
 interface Lessons {
     lesson_no: number;
     lesson_name: string | number;
 }
 // lessons array
-const lessons: Lessons[] = [
-    {
-        lesson_no: 1,
-        lesson_name: 'Basic Greetings'
-    },
-    {
-        lesson_no: 2,
-        lesson_name: 'Greetings and Time'
-    },
-    {
-        lesson_no: 3,
-        lesson_name: 'Common Phrases'
-    },
-    {
-        lesson_no: 4,
-        lesson_name: 'Basic Conversations'
-    },
-    {
-        lesson_no: 5,
-        lesson_name: 'Languages'
-    },
-    {
-        lesson_no: 6,
-        lesson_name: 'People and Occupations'
-    },
-    {
-        lesson_no: 7,
-        lesson_name: 'Feelings and Health'
-    },
-    {
-        lesson_no: 8,
-        lesson_name: 'Verbs and Actions'
-    },
-    {
-        lesson_no: 9,
-        lesson_name: 'Travel and Directions'
-    },
-    {
-        lesson_no: 10,
-        lesson_name: 'Adjectives'
-    },
-]
+
 
 const Page = () => {
     const [lesson, setLesson] = useState('')
@@ -73,6 +33,7 @@ const Page = () => {
     const { data: vocabularies, isPending,
         //  isError, error 
     } = useGetVocabulariesAdmin(lesson);
+    const { data: lessons = [] } = useDropdownLesson();
     if (isPending) {
         return <Loading />
     }

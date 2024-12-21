@@ -1,10 +1,13 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
-
+interface Lessons {
+    lesson_no: number;
+    lesson_name: string | number;
+}
 export const useCreateVocabulary = () => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async (vocabulary) => {
+        mutationFn: async (vocabulary: object) => {
             const { data } = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-vocabulary`, vocabulary)
             return data;
         },
@@ -15,4 +18,14 @@ export const useCreateVocabulary = () => {
 
         }
     })
+}
+export const useDropdownLesson = () => {
+    const { data, isLoading } = useQuery<Lessons[]>({
+        queryFn: async () => {
+            const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson-filter`)
+            return data;
+        }, queryKey: ['lesson-filter']
+    })
+    return { data, isLoading }
+
 }

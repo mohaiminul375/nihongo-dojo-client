@@ -12,11 +12,13 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import toast from 'react-hot-toast';
-import { useCreateVocabulary } from './api/route';
+import { useCreateVocabulary, useDropdownLesson } from './api/route';
 import { useUser } from '@/AuthProvider/UserContext';
 import withAdminAuth from '@/AuthProvider/withAdminAuth';
+import Loading from '@/app/loading';
 
 type Inputs = {
+    admin_email: string;
     word: string;
     pronunciation: string;
     when_to_say: string;
@@ -25,65 +27,57 @@ type Inputs = {
     lesson_no: number | string;
     term: string;
     definition: string;
-    admin_email: string;
+    email: string;
 }
 
 // lesson type
-interface Lessons {
-    lesson_no: number;
-    lesson_name: string | number;
-}
+
 // TODO: dynamic
 // lessons array
-const lessons: Lessons[] = [
-    {
-        lesson_no: 1,
-        lesson_name: 'Basic Greetings'
-    },
-    {
-        lesson_no: 2,
-        lesson_name: 'Greetings and Time'
-    },
-    {
-        lesson_no: 3,
-        lesson_name: 'Common Phrases'
-    },
-    {
-        lesson_no: 4,
-        lesson_name: 'Basic Conversations'
-    },
-    {
-        lesson_no: 5,
-        lesson_name: 'Languages'
-    },
-    {
-        lesson_no: 6,
-        lesson_name: 'People and Occupations'
-    },
-    {
-        lesson_no: 7,
-        lesson_name: 'Feelings and Health'
-    },
-    {
-        lesson_no: 8,
-        lesson_name: 'Verbs and Actions'
-    },
-    {
-        lesson_no: 9,
-        lesson_name: 'Travel and Directions'
-    },
-    {
-        lesson_no: 10,
-        lesson_name: 'Adjectives'
-    },
-]
+// const lessons: Lessons[] = [
+//     {
+//         lesson_no: 1,
+//         lesson_name: 'Basic Greetings'
+//     },
+//     {
+//         lesson_no: 2,
+//         lesson_name: 'Greetings and Time'
+//     },
+//     {
+//         lesson_no: 3,
+//         lesson_name: 'Common Phrases'
+//     },
+//     {
+//         lesson_no: 4,
+//         lesson_name: 'Basic Conversations'
+//     },
+//     {
+//         lesson_no: 5,
+//         lesson_name: 'Languages'
+//     },
+//     {
+//         lesson_no: 6,
+//         lesson_name: 'People and Occupations'
+//     },
+//     {
+//         lesson_no: 7,
+//         lesson_name: 'Feelings and Health'
+//     },
+//     {
+//         lesson_no: 8,
+//         lesson_name: 'Verbs and Actions'
+//     },
+//     {
+//         lesson_no: 9,
+//         lesson_name: 'Travel and Directions'
+//     },
+//     {
+//         lesson_no: 10,
+//         lesson_name: 'Adjectives'
+//     },
+// ]
 // Main page start form here
 const Page = () => {
-    const user = useUser();
-    const createVocabulary = useCreateVocabulary()
-    const [lesson, setLesson] = useState('');
-    console.log(lesson)
-    // react hook form
     const {
         register,
         handleSubmit,
@@ -92,11 +86,21 @@ const Page = () => {
         // watch,
         // formState: { errors },
     } = useForm<Inputs>()
+    const user = useUser();
+    const { data: lessons = [], isLoading } = useDropdownLesson()
+    const createVocabulary = useCreateVocabulary()
+    const [lesson, setLesson] = useState('');
+    console.log(lesson)
+    // react hook form
+    if (isLoading) {
+        return <Loading />
+    }
+    // console.log()
     const onSubmit: SubmitHandler<Inputs> = async (vocabulary) => {
         if (typeof vocabulary.lesson_no === 'string') {
             vocabulary.lesson_no = parseFloat(vocabulary.lesson_no);
             vocabulary.createAt = new Date().toLocaleString();
-            vocabulary.admin_email = user.email;
+            vocabulary.admin_email = user?.email;
             console.log(vocabulary)
             // send to db
             const res = await createVocabulary.mutateAsync(vocabulary);
