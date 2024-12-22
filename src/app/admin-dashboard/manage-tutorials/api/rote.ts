@@ -1,9 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 import toast from "react-hot-toast"
+// typescript
+interface Tutorials {
+    _id: string;
+    embed_link: string;
+    title: string;
+}
 // get all tutorials
 export const useGetTutorials = () => {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError, error } = useQuery<Tutorials[]>({
         queryFn: async () => {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-tutorials`, { withCredentials: true })
             return data

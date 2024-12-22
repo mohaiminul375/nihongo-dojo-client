@@ -1,8 +1,16 @@
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 
-
-const ContentCard = ({ content }) => {
-    const { word, pronunciation, when_to_say, english_meaning, lesson_no } = content;
+interface CardProps {
+    word: string;
+    pronunciation: string;
+    when_to_say: string;
+    english_meaning: string;
+}
+interface Content {
+    content: CardProps
+}
+const ContentCard = ({ content }: Content) => {
+    const { word, pronunciation, when_to_say, english_meaning } = content;
     console.log(content)
     // Speaking function
     const handleSpeak = () => {

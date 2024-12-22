@@ -25,7 +25,18 @@ type Inputs = {
     definition: string;
     admin_email: string;
 }
+interface Vocabularies {
 
+    _id: string,
+    word: string,
+    pronunciation: string,
+    when_to_say: string,
+    english_meaning: string,
+    lesson_no: number,
+}
+interface Vocabulary {
+    vocabulary: Vocabularies
+}
 // const lessons: Lessons[] = [
 //     {
 //         lesson_no: 1,
@@ -68,7 +79,7 @@ type Inputs = {
 //         lesson_name: 'Adjectives'
 //     },
 // ]
-const VocabularyDialog = ({ vocabulary }) => {
+const VocabularyDialog = ({ vocabulary }: Vocabulary) => {
     const {
         register,
         handleSubmit,
@@ -87,7 +98,7 @@ const VocabularyDialog = ({ vocabulary }) => {
     // react hook form
     const onSubmit: SubmitHandler<Inputs> = async (update_info) => {
         console.log(update_info)
-        const res = await updateVocabulary.mutateAsync({ update_info })
+        const res = await updateVocabulary.mutateAsync(update_info)
         console.log(res);
 
     }

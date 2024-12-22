@@ -12,9 +12,19 @@ import { Ban } from "lucide-react";
 import Swal from "sweetalert2";
 import { useDeleteUser, useUpdateRole, useUpdateStatus } from "@/app/admin-dashboard/user-management/api/route";
 import toast from "react-hot-toast";
+interface Users {
+    _id: string,
+    user_name: string,
+    email: string,
+    role: string,
+    status?: string,
+}
+interface TableProps {
+    user: Users,
+    idx: number,
+}
 
-
-const UsersTableData = ({ user, idx }) => {
+const UsersTableData = ({ user, idx }: TableProps) => {
 
     const deleteUser = useDeleteUser()
     const updateStatus = useUpdateStatus()
@@ -52,7 +62,7 @@ const UsersTableData = ({ user, idx }) => {
         });
     }
     // handle update role
-    const updateNewRole = (role) => {
+    const updateNewRole = (role: string) => {
         if (email === 'admin1@nihongo.com') {
             return toast.error("Admin role are protected")
         }
@@ -83,7 +93,7 @@ const UsersTableData = ({ user, idx }) => {
         });
     }
     // handle baned user
-    const handleBanUser = (_id) => {
+    const handleBanUser = (_id: string) => {
         const status = 'Ban';
         console.log(_id, status)
         Swal.fire({
@@ -121,7 +131,7 @@ const UsersTableData = ({ user, idx }) => {
                 <Select
                     disabled={status === 'Ban'}
                     onValueChange={(value) => {
-                        updateNewRole({ value })
+                        updateNewRole(value)
                     }}
                 >
                     <SelectTrigger

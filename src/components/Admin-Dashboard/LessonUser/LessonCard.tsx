@@ -13,12 +13,14 @@ import { useGetProgress } from "@/app/lessons/api/route";
 import Loading from "@/app/loading";
 import { Badge } from "@/components/ui/badge";
 // import {  } from "lucide-react";
-interface CardProp {
+interface Lessons {
     lesson_no: number,
     lesson_name: string,
-    Vocabulary_count: string,
+    vocabulary_count: string,
 }
-
+interface CardProp {
+    lesson: Lessons
+}
 const LessonCard = ({ lesson }: CardProp) => {
     const { user } = useUser()
     const { lesson_no, lesson_name, vocabulary_count } = lesson;

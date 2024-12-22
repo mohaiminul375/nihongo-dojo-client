@@ -28,14 +28,14 @@ const Page = () => {
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();
-    const { data: lessonContent = {}, isPending } = useGetLessonsContent(id, currentPg);
+    const { data: lessonContent={}, isPending } = useGetLessonsContent(id as string, currentPg);
     const { data: lesson } = useGetLessonHeading(id as string);
-    const { data: progress, } = useGetProgress(user?.email);
+    const { data: progress = [], } = useGetProgress(user?.email);
     const { width, height } = useWindowSize(); // Get window size for Confetti
     if (isPending) {
         return <Loading />
     }
-    const isCompleted = progress.lessons.some((les) => les.lesson_no === lesson.lesson_no) || false;
+    const isCompleted = progress?.lessons?.some((les) => les.lesson_no === lesson.lesson_no) || false;
     console.log(isCompleted)
     // handle completed
     const handleComplete = async () => {
@@ -63,7 +63,7 @@ const Page = () => {
         <section className="border-2 bg-primary rounded-md md:w-96 mx-auto">
             {/* Heading */}
             <div>
-                <LessonHeading id={id} />
+                <LessonHeading id={id as string} />
             </div>
             {/* Lesson Card */}
             <div className="flex justify-center">

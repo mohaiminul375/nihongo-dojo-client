@@ -17,7 +17,7 @@ const ManageTutorials = () => {
     if (isError) {
         return (
             <div className="flex justify-center items-center h-screen">
-                <p className="text-red-500 text-xl">Error: {error.message}</p>
+                <p className="text-red-500 text-xl">Error: {error?.message}</p>
             </div>
         );
     }
@@ -66,7 +66,7 @@ const ManageTutorials = () => {
                 </div>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {tutorials.map((video) => (
+                    {tutorials?.map((video) => (
                         <div key={video._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
                             {/* Video Embed */}
                             <div className="relative pb-[60.25%]">

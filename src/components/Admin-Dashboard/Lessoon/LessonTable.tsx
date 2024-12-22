@@ -13,8 +13,20 @@ import {
 } from "@/components/ui/dialog";
 import { useState } from "react";
 import LessonDialog from "../LessonUser/LessonDialog";
+
+// typescript
+interface Lessons {
+    _id: string,
+    lesson_name: string,
+    lesson_no: number,
+    vocabulary_count: number;
+}
+interface TableProps {
+    lesson: Lessons,
+    idx: number,
+}
 // main func start
-const LessonTable = ({ lesson, idx }) => {
+const LessonTable = ({ lesson, idx }: TableProps) => {
     const deleteLesson = useDeleteLesson();
     const { _id, lesson_name, lesson_no, vocabulary_count } = lesson
     const [isDialogOpen, setIsDialogOpen] = useState(false);

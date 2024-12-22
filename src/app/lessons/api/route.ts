@@ -1,5 +1,13 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import axios from "axios";
+interface Lessons {
+    _id: string;
+    lesson_no: number;
+}
+
+interface Progress {
+    lessons: Array<[]>;
+}
 
 export const useGetLessonsUser = () => {
     const { data, isPending, isError, error } = useQuery({
@@ -11,7 +19,10 @@ export const useGetLessonsUser = () => {
     })
     return { data, isPending, isError, error }
 }
+// interface LessonsContent {
 
+
+// }
 // get lesson content by lesson_no
 export const useGetLessonsContent = (lesson_no: string | string[], page: number) => {
     const { data, isPending, isError, error } = useQuery({

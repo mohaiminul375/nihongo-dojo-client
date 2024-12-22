@@ -20,10 +20,7 @@ import withAdminAuth from "@/AuthProvider/withAdminAuth";
 import Loading from "@/app/loading";
 import { useDropdownLesson } from "../create-vocabularies/api/route";
 // lesson type
-interface Lessons {
-    lesson_no: number;
-    lesson_name: string | number;
-}
+
 // lessons array
 
 

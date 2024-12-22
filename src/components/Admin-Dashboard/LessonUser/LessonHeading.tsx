@@ -8,7 +8,7 @@ const LessonHeading = ({ id }: PropsType) => {
     console.log('inside heading', id)
     const { data, isPending } = useGetLessonHeading(id);
     if (isPending) {
-        return <Loading/>
+        return <Loading />
     }
     console.log(data);
     return (

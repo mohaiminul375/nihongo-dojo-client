@@ -1,9 +1,22 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 import toast from "react-hot-toast"
+// typescript
+interface Lessons {
+    _id: string,
+    lesson_name: string,
+    lesson_no: number,
+    vocabulary_count: number;
+}
+
+
+
+
+
+
 // get lessons admin
 export const useGetLessons = () => {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError, error } = useQuery<Lessons[]>({
         queryFn: async () => {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson`)
             return data;
@@ -17,7 +30,7 @@ export const useGetLessons = () => {
 export const useUpdateLesson = (id: string) => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async (update_info:object) => {
+        mutationFn: async (update_info: object) => {
             const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson/${id}`, update_info)
             return data;
         },

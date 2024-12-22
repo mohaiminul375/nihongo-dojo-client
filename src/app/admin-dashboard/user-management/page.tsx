@@ -41,7 +41,7 @@ const UserTable = () => {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {users.map((user, index) => (
+                        {users?.map((user, index) => (
                             <UsersTableData
                                 key={user._id}
                                 user={user}

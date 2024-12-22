@@ -2,8 +2,21 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import axios from "axios"
 import toast from "react-hot-toast"
 
+//typescript
+interface Users {
+    _id: string,
+    user_name: string,
+    email: string,
+    role: string,
+    status?: string,
+}
+interface UpdateStatus {
+    _id: string,
+    status: string;
+}
+
 export const useGetUsers = () => {
-    const { data, isPending, isError, error } = useQuery({
+    const { data, isPending, isError, error } = useQuery<Users[]>({
         queryFn: async () => {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-users`)
             return data;
@@ -16,8 +29,7 @@ export const useGetUsers = () => {
 export const useUpdateRole = (id: string) => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async (role) => {
-            console.log('inisde ', id, role)
+        mutationFn: async (role: string) => {
             const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-users/${id}`, role)
             return data;
         },
@@ -36,9 +48,9 @@ export const useUpdateRole = (id: string) => {
 export const useUpdateStatus = () => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async ({ _id, status }) => {
-            console.log(_id,status,'inside tanstack')
-            const { data } = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-status/${_id}`, {status})
+        mutationFn: async ({ _id, status }: UpdateStatus) => {
+            console.log(_id, status, 'inside tanstack')
+            const { data } = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-status/${_id}`, { status })
             return data;
         },
         mutationKey: ['update-status'],

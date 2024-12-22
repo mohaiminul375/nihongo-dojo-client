@@ -2,23 +2,24 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 interface Vocabulary {
-    _id: string;
-    word: string;
-    meaning: string;
-    lesson_no: string;
+    // vocabulary: object,
+    _id: string,
+    word: string,
+    pronunciation: string,
+    when_to_say: string,
+    english_meaning: string,
+    lesson_no: number,
 }
 
-interface UseGetVocabulariesAdminReturn {
-    data: Vocabulary[] | undefined;
-    isPending: boolean;
-    isError: boolean;
-    error: unknown;
-}
 
-export const useGetVocabulariesAdmin = (lesson_no: string): UseGetVocabulariesAdminReturn => {
-    const { data, isLoading: isPending, isError, error } = useQuery({
+
+
+// TODO: May have some error
+
+export const useGetVocabulariesAdmin = (lesson_no: string) => {
+    const { data, isLoading: isPending, isError, error } = useQuery<Vocabulary[]>({
         queryFn: async () => {
-            const { data } = await axios.get<Vocabulary[]>(
+            const { data } = await axios.get(
                 `${process.env.NEXT_PUBLIC_SERVER_URL}/all-vocabulary?lesson_no=${lesson_no}`
             );
             return data;
@@ -31,10 +32,9 @@ export const useGetVocabulariesAdmin = (lesson_no: string): UseGetVocabulariesAd
 
 // update vocabulary
 export const useUpdateVocabulary = (id: string) => {
-    console.log(id, 'id on ')
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async ({ update_info }) => {
+        mutationFn: async (update_info: object) => {
             console.log(update_info, 'update info')
             const { data } = await axios.patch(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-vocabulary/${id}`, update_info)
             return data;

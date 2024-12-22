@@ -30,7 +30,7 @@ const Page = () => {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {lessons.map((lesson, index) => (
+                        {lessons?.map((lesson, index) => (
                             <LessonTable
                                 key={lesson._id}
                                 lesson={lesson}
