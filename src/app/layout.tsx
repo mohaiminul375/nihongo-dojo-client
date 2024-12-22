@@ -8,6 +8,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import { UserProvider } from "@/AuthProvider/UserContext";
+import Footer from '@/components/shared/Footer';
 // import { UserProvider } from "@/AuthProvider/UserContext";
 
 
@@ -33,9 +34,10 @@ export default function RootLayout({
         <UserProvider>
           <QueryClientProvider client={queryClient}>
             <Navbar />
-            <main className="mt-10">
+            <main className="my-10">
               {children}
             </main>
+            <Footer />
             <Toaster />
           </QueryClientProvider>
         </UserProvider>
