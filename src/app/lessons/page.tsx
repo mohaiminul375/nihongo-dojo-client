@@ -10,7 +10,7 @@ import { useUser } from "@/AuthProvider/UserContext";
 const Page = () => {
     const { user } = useUser()
     const { data: lessons = [], isPending } = useGetLessonsUser();
-    const { data: progress } = useGetProgress(user.email);
+    const { data: progress } = useGetProgress(user?.email);
     if (isPending) {
         return <Loading />
     }
