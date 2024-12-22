@@ -35,7 +35,7 @@ const Page = () => {
     if (isPending) {
         return <Loading />
     }
-    const isCompleted = progress.lessons.some((les) => les.lesson_no === lesson.lesson_no);
+    const isCompleted = progress.lessons.some((les) => les.lesson_no === lesson.lesson_no) || false;
     console.log(isCompleted)
     // handle completed
     const handleComplete = async () => {

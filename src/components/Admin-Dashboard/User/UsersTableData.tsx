@@ -18,7 +18,7 @@ const UsersTableData = ({ user, idx }) => {
 
     const deleteUser = useDeleteUser()
     const updateStatus = useUpdateStatus()
-    const { _id, user_name, email, role } = user;
+    const { _id, user_name, email, role, status } = user;
 
     const updateRole = useUpdateRole(_id)
     // update role
@@ -53,6 +53,9 @@ const UsersTableData = ({ user, idx }) => {
     }
     // handle update role
     const updateNewRole = (role) => {
+        if (email === 'admin1@nihongo.com') {
+            return toast.error("Admin role are protected")
+        }
         Swal.fire({
             title: "Are you sure to change role?",
             text: "After change it may get or lost some access",
@@ -82,6 +85,7 @@ const UsersTableData = ({ user, idx }) => {
     // handle baned user
     const handleBanUser = (_id) => {
         const status = 'Ban';
+        console.log(_id, status)
         Swal.fire({
             title: "Are you sure to Ban user?",
             text: "After Ban user will lost access",
@@ -109,19 +113,18 @@ const UsersTableData = ({ user, idx }) => {
         });
     }
     return (
-        <TableRow>
+        <TableRow className={`${status && status === 'Ban' && 'text-red-400'}`}>
             <TableCell>{idx + 1}</TableCell>
             <TableCell className="font-medium">{user_name}</TableCell>
             <TableCell>{email}</TableCell>
             <TableCell>
                 <Select
-
+                    disabled={status === 'Ban'}
                     onValueChange={(value) => {
                         updateNewRole({ value })
                     }}
                 >
                     <SelectTrigger
-
                         className="w-[100px] mx-auto">
                         <SelectValue placeholder={role} />
                     </SelectTrigger>
@@ -134,11 +137,14 @@ const UsersTableData = ({ user, idx }) => {
             <TableCell className="text-right">
                 <div className="flex justify-end gap-2">
                     <Button
+                        className="disabled:cursor-not-allowed"
+                        disabled={status === 'Ban' || email === 'admin1@nihongo.com'}
                         onClick={() => handleBanUser(_id)}
                         variant="outline" size="sm">
                         <Ban />
                     </Button>
                     <Button
+                        disabled={email === 'admin1@nihongo.com'}
                         onClick={(() => handleDeleteUser(_id))}
                         variant="outline" size="sm" className="text-red-700">
                         Delete

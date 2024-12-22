@@ -18,7 +18,7 @@ const Page = () => {
     // Calculation completion
     const totalLessons = lessons?.length;
     const completedLessons = progress?.lessons?.length;
-    const completionPercentage = (completedLessons / totalLessons) * 100;
+    const completionPercentage = (completedLessons / totalLessons) * 100 || 0;
     return (
         <section>
             {/* Heading */}

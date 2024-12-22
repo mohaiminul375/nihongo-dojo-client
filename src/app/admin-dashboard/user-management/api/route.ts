@@ -36,12 +36,12 @@ export const useUpdateRole = (id: string) => {
 export const useUpdateStatus = () => {
     const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: async ({ id, status }) => {
-
-            const { data } = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-status/${id}`, status)
+        mutationFn: async ({ _id, status }) => {
+            console.log(_id,status,'inside tanstack')
+            const { data } = await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/update-status/${_id}`, {status})
             return data;
         },
-        mutationKey: ['update-role'],
+        mutationKey: ['update-status'],
         onSuccess: () => {
 
             queryClient.invalidateQueries({ queryKey: ['all-users'] })
