@@ -32,30 +32,32 @@
 # website features
 
 - Default User:
-- user can access all lesson
-- user can access all tutorials
+- Login Redirect: Upon visiting the website, users are redirected to the login page.
+- Lesson Page: After logging in, the user is redirected to the lesson page, where they can learn Japanese vocabulary.
 
-- Admin:
-- Admin Dashboard: Access a dedicated dashboard with comprehensive management features.
-- here admin can see some information
-- Admin Can Create, Update, Delete lessons
-- Admin Can Create, Update, Delete tutorials
-- Admin can change role any user can delete and ban
+  - Each lesson contains a set of vocabulary items.
+  - Users can click on any vocabulary item to hear the pronunciation - - (speaks the word aloud).
+  - Users can track their progress as they learn.
 
+- Tutorials: There is a tutorial page where users can access YouTube videos to help them understand the learning process better.
+
+- Admin
+- Admin Dashboard: Admins are redirected to the admin dashboard after logging in.
+  -Admins can manage YouTube tutorials by adding, editing, and deleting them.
+  -Admins can add, edit, and delete lessons.
+  -Admins can add, edit, and delete vocabulary items for each lesson.
+  -Admins can manage users, including promoting or banning users as necessary.
 
 # Access Info
 
 - Admin email: admin1@nihongo.com
 - Admin password: admin@A1
 
-
-
 # Technology
 
 - HTML, CSS, Next.js, Typescript (front-end)
 - Express.js, MongoDB(back-end)
 - Custom Auth
-
 
 # npm and Packages
 
@@ -69,5 +71,6 @@
 - npm i react-confetti
 - axios
 
-# npm and Packages
+# Server Side
+
 - https://github.com/mohaiminul375/nihongo-dojo-server
