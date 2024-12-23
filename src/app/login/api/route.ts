@@ -21,7 +21,7 @@ export const useUserLogin = () => {
                 setToken(data?.token || null)
                 setTimeout(() => {
                     router.replace('/admin-dashboard')
-                }, 3000)
+                }, 1000)
             }
             else if (data.role === "User") {
                 toast.success('Login successfully');
@@ -29,7 +29,7 @@ export const useUserLogin = () => {
                 setToken(data?.token || null);
                 setTimeout(() => {
                     router.replace('/lessons')
-                }, 3000)
+                }, 1000)
             }
         },
         onError: (error: any) => {

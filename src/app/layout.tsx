@@ -31,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${roboto.className} antialiased`}
       >
+        <title>Nihongo-Dojo </title>
         <UserProvider>
           <QueryClientProvider client={queryClient}>
             <Navbar />

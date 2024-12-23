@@ -68,7 +68,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation Menu */}
-            <div className="hidden lg:flex flex-grow justify-end">
+            <div className="hidden lg:flex flex-grow justify-end mr-4">
                 <NavigationMenu>
                     <NavigationMenuList className="flex space-x-3">
                         {navItems.map((item, index) => {
@@ -103,7 +103,7 @@ export default function Navbar() {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
                             <DropdownMenuLabel>{user.user_name}</DropdownMenuLabel>
-                            <DropdownMenuLabel>{user.user_email}</DropdownMenuLabel>
+                            <DropdownMenuLabel>{user.email}</DropdownMenuLabel>
                             <DropdownMenuLabel onClick={logOut}>LogOut</DropdownMenuLabel>
                             <DropdownMenuSeparator />
                         </DropdownMenuContent>

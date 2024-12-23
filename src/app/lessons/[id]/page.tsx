@@ -61,6 +61,7 @@ const Page = () => {
 
     return (
         <section className="border-2 bg-primary rounded-md md:w-96 mx-auto">
+            <title>Nihongo-Dojo | Lesson-{id}</title>
             {/* Heading */}
             <div>
                 <LessonHeading id={id as string} />

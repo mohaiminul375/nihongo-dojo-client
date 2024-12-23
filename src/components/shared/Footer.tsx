@@ -38,8 +38,19 @@ const Footer = () => {
                         <p>Phone: (123) 456-7890</p>
                     </div>
                 </div>
+                {/* developer info */}
+                <div className="flex flex-col items-start text-white space-y-2 text-sm md:text-sm font-semibold">
+                    <p>
+                        Design & Developed by:{" "}
+                        <Link href="https://mohaiminul-dev.web.app" className="underline hover:text-gray-300">
+                            Mohaiminul Islam
+                        </Link>
+                    </p>
+                    {/* <p>Version: V2 | Last Update: 23-Dec-2024, 9:50 A.M (BDT)</p> */}
+                </div>
+
             </div>
-        </footer>
+        </footer >
     )
 }
 

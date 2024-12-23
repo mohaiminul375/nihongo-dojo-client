@@ -1,5 +1,4 @@
 'use client'
-
 import LessonCard from "@/components/Admin-Dashboard/LessonUser/LessonCard";
 import { useGetLessonsUser, useGetProgress } from "./api/route";
 import withAuth from "@/AuthProvider/withAuth";
@@ -21,6 +20,7 @@ const Page = () => {
     const completionPercentage = (completedLessons / totalLessons) * 100 || 0;
     return (
         <section>
+            <title>Nihongo-Dojo | Lessons</title>
             {/* Heading */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Explore Your Lessons</h2>

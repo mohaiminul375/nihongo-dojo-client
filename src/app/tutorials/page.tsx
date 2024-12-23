@@ -21,6 +21,7 @@ const Page = () => {
 
     return (
         <section className="md:max-w-7xl mx-auto">
+            <title>Nihongo-Dojo | Tutorials</title>
             {/* Header Section */}
             <div className="text-center mb-8">
                 <h2 className="text-3xl text-white font-semibold">Explore YouTube Tutorials</h2>

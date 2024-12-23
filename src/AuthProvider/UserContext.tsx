@@ -29,7 +29,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const [token, setToken] = useState<string | null>(null);  // Set as null initially
+    const [token, setToken] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
@@ -66,7 +66,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
             fetchUser();
         }
-    }, []);  // Run once when component mounts
+    }, [token]);  // Run once when component mounts
 
     // Logout and redirect to login page
     const logOut = () => {

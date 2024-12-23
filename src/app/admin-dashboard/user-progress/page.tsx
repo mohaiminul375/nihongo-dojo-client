@@ -15,9 +15,10 @@ const Page = () => {
     if (isPending) {
         return <Loading />
     }
-    
+
     return (
         <section className=" mt-10">
+            <title>Nihongo-Dojo | User Progresses</title>
             {/* Header Section */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Track User Progress</h2>

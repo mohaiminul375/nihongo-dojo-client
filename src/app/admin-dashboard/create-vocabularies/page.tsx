@@ -119,6 +119,7 @@ const Page = () => {
     }
     return (
         <section>
+            <title>Nihongo-Dojo | Create Vocabularies</title>
             {/* Header Section */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Create Vocabularies</h2>

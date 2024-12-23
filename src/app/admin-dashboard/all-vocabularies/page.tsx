@@ -37,6 +37,7 @@ const Page = () => {
     console.log(vocabularies)
     return (
         <section>
+            <title>Nihongo-Dojo | All Vocabularies</title>
             {/* Heading */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Manage Your Vocabularies</h2>

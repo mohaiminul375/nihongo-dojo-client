@@ -6,7 +6,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
-import {  useGetUsers } from "./api/route"
+import { useGetUsers } from "./api/route"
 import UsersTableData from "@/components/Admin-Dashboard/User/UsersTableData";
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
 import Loading from "@/app/loading";
@@ -18,11 +18,12 @@ const UserTable = () => {
         //  isError, error 
     } = useGetUsers();
     if (isPending) {
-        return <Loading/>
+        return <Loading />
     }
- 
+
     return (
         <section className=" mt-10">
+            <title>Nihongo-Dojo | User Management</title>
             {/* Header Section */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Manage Users for Nihongo Dojo</h2>

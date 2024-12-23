@@ -44,6 +44,7 @@ const Page = () => {
     }
     return (
         <section>
+             <title>Nihongo-Dojo | Create Lessons</title>
             {/* Header Section */}
             <div className="text-center my-10">
                 <h2 className="text-3xl text-white font-semibold">Create Lesson</h2>
