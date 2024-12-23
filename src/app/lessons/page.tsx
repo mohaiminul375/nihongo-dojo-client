@@ -8,13 +8,13 @@ import { Progress } from "@/components/ui/progress";
 import { useUser } from "@/AuthProvider/UserContext";
 
 const Page = () => {
-    const { user } = useUser()
+    const { user, loading } = useUser()
     const { data: lessons = [], isPending } = useGetLessonsUser();
     const { data: progress } = useGetProgress(user?.email);
-    if (isPending) {
+    if (isPending || loading) {
         return <Loading />
     }
-    console.log(lessons)
+
     // Calculation completion
     const totalLessons = lessons?.length;
     const completedLessons = progress?.lessons?.length;

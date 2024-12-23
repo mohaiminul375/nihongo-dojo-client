@@ -1,4 +1,5 @@
 'use client';
+import withAuth from '@/AuthProvider/withAuth';
 import { useGetTutorials } from '../admin-dashboard/manage-tutorials/api/rote';
 
 const Page = () => {
@@ -58,4 +59,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default withAuth(Page);

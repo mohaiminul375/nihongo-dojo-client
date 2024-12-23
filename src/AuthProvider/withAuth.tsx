@@ -1,25 +1,38 @@
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { useUser } from './UserContext';
+import Loading from '@/app/loading';
 
-const withAuth = (WrappedComponent) => {
-    return (props) => {
+
+
+interface AuthProps {
+    user?: any; // Replace `any` with your `User` type if defined
+}
+
+const withAuth = <P extends object>(WrappedComponent: React.ComponentType<P & AuthProps>) => {
+    const ProtectedComponent = (props: P) => {
         const { user, loading } = useUser();
         const router = useRouter();
-
+        console.log(user,'user in pro')
         useEffect(() => {
-            if (!loading && !user) {
-                router.push('/login');
+            if (loading) {
+                return;
             }
-        },
-            [loading, user]);
+            if (!user) {
+                router.replace('/login');
+            } else {
 
-        if (loading) {
-            return <div>Loading...</div>; // Display loading state
+            }
+        }, [loading, user, router])
+        if (!user) {
+            return null;
         }
 
         return <WrappedComponent {...props} user={user} />;
     };
+
+    return ProtectedComponent;
 };
 
 export default withAuth;
+

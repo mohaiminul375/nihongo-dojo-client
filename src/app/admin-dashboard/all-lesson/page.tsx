@@ -10,7 +10,7 @@ const Page = () => {
     if (isPending) {
         return <Loading />
     }
-    console.log(lessons);
+    
     return (
         <section>
             {/* Header Section */}

@@ -29,7 +29,7 @@ const LessonCard = ({ lesson }: CardProp) => {
         return <Loading />
     }
     const isCompleted = data.lessons?.some(lesson => lesson.lesson_no === lesson_no) || false;
-    console.log(isCompleted)
+ 
     return (
         <Card className="xl:w-[300px] lg:w-[250]">
             <CardHeader className="pb-2">

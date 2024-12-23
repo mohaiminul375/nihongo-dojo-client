@@ -26,26 +26,55 @@ const navItems = [
 
 export default function Navbar() {
     const pathname = usePathname();
-    const { user, logOut } = useUser(); // Fetching user data from context
-
+    const { user, logOut, loading } = useUser();
+    console.log(user, loading)
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
+            {/* Mobile Menu Icon */}
+            <div className="lg:hidden mr-4">
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button variant="outline" size="icon">
+                            <MenuIcon />
+                            <span className="sr-only">Toggle navigation menu</span>
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent side="left">
+                        <div className="grid gap-2 py-6">
+                            {navItems.map((item, index) => {
+                                if (item.title === 'Admin Dashboard' && user?.role !== 'Admin') {
+                                    return null;
+                                }
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={item.path}
+                                        className={`flex w-full items-center py-2 text-lg font-semibold text-white ${pathname === item.path ? 'underline shadow-2xl' : ''}`}
+                                        prefetch={false}
+                                    >
+                                        {item.title}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                    </SheetContent>
+                </Sheet>
+            </div>
+
             {/* Logo */}
-            <Link href="/" className="mr-6 flex items-center lg:mr-12" prefetch={false}>
+            <Link href="/" className="flex items-center" prefetch={false}>
                 <MountainIcon />
                 <span className="ml-2 text-lg text-white hidden lg:block">Nihongo Dojo</span>
             </Link>
 
-            {/* Navigation Menu */}
+            {/* Desktop Navigation Menu */}
             <div className="hidden lg:flex flex-grow justify-end">
                 <NavigationMenu>
                     <NavigationMenuList className="flex space-x-3">
                         {navItems.map((item, index) => {
-                            // Conditionally render Admin Dashboard link based on user role
                             if (item.title === 'Admin Dashboard' && user?.role !== 'Admin') {
-                                return null; // Skip rendering if user is not an admin
+                                return null;
                             }
-
                             return (
                                 <NavigationMenuLink asChild key={index}>
                                     <Link
@@ -62,64 +91,35 @@ export default function Navbar() {
                 </NavigationMenu>
             </div>
 
-            {/* Login Button */}
+            {/* Login/Register Buttons */}
             {user ? (
-                <DropdownMenu>
-                    <DropdownMenuTrigger>
-                        <Avatar>
-                            <AvatarImage src={user?.img} alt="avatar" />
-                            <AvatarFallback></AvatarFallback>
-                        </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        <DropdownMenuLabel>{user.user_name}</DropdownMenuLabel>
-                        <DropdownMenuLabel>{user.user_email}</DropdownMenuLabel>
-                        <DropdownMenuLabel
-                            onClick={logOut}
-                        >LogOut</DropdownMenuLabel>
-                        <DropdownMenuSeparator />
-
-                    </DropdownMenuContent>
-                </DropdownMenu>
+                <div className="ml-auto flex items-center">
+                    <DropdownMenu>
+                        <DropdownMenuTrigger>
+                            <Avatar>
+                                <AvatarImage src={user?.img} alt="avatar" />
+                                <AvatarFallback />
+                            </Avatar>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuLabel>{user.user_name}</DropdownMenuLabel>
+                            <DropdownMenuLabel>{user.user_email}</DropdownMenuLabel>
+                            <DropdownMenuLabel onClick={logOut}>LogOut</DropdownMenuLabel>
+                            <DropdownMenuSeparator />
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+                </div>
             ) : (
-                <div className="ml-auto hidden lg:block">
-                    <Link className="mr-2" href='/register'>Register</Link>
-                    <Link href='/login'>
-                        <Button variant='default' className="rounded-full">Login</Button>
+                <div className="ml-auto flex items-center">
+                    <Link className="mx-2 text-white" href="/register">Register</Link>
+                    <Link href="/login">
+                        <Button variant="default" className="rounded-full">Login</Button>
                     </Link>
                 </div>
             )}
-
-            {/* Mobile Menu */}
-            <Sheet>
-                <SheetTrigger asChild>
-                    <Button variant="outline" size="icon" className="lg:hidden ml-auto">
-                        <MenuIcon />
-                        <span className="sr-only">Toggle navigation menu</span>
-                    </Button>
-                </SheetTrigger>
-                <SheetContent side="left">
-                    <div className="grid gap-2 py-6">
-                        {navItems.map((item, index) => {
-                            if (item.title === 'Admin Dashboard' && user?.role !== 'Admin') {
-                                return null;
-                            }
-
-                            return (
-                                <Link
-                                    key={index}
-                                    href={item.path}
-                                    className={`flex w-full items-center py-2 text-lg font-semibold text-white ${pathname === item.path ? 'underline shadow-2xl' : ''}`}
-                                    prefetch={false}
-                                >
-                                    {item.title}
-                                </Link>
-                            );
-                        })}
-                    </div>
-                </SheetContent>
-            </Sheet>
         </header>
+
+
     );
 }
 
