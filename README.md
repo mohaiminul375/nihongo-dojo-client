@@ -44,9 +44,18 @@
 - Admin
 - Admin Dashboard: Admins are redirected to the admin dashboard after logging in.
   -Admins can manage YouTube tutorials by adding, editing, and deleting them.
-  -Admins can add, edit, and delete lessons.
-  -Admins can add, edit, and delete vocabulary items for each lesson.
-  -Admins can manage users, including promoting or banning users as necessary.
+  - Admins can add, edit, and delete lessons.
+  - Admins can add, edit, and delete vocabulary items for each lesson.
+  - Admins can manage users, including promoting or banning users as necessary.
+
+# website features 2.0
+
+- Default User:
+- More Interactive Lesson Page: Enhanced lesson pages with interactive elements for better learning engagement.
+- User Profile: Users can view and update their information, including progress tracking.
+
+- Admin:
+- Admin Dashboard: Expanded features for managing users, lessons, and tutorials, including adding, editing, and deleting content.
 
 # Access Info
 
@@ -55,8 +64,8 @@
 
 # Technology
 
-- HTML, CSS, Next.js, Typescript (front-end)
-- Express.js, MongoDB(back-end)
+- HTML, CSS,ShadCn, Next.js, Typescript (front-end)
+- Express.js, MongoDB,JWT(back-end)
 - Custom Auth
 
 # npm and Packages
@@ -67,6 +76,7 @@
 - RadixUi
 - Lucide (icon)
 - React hook form
+- react hot toast
 - sweet alert 2
 - npm i react-confetti
 - axios
