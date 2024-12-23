@@ -100,7 +100,7 @@ const Page = () => {
         if (typeof vocabulary.lesson_no === 'string') {
             vocabulary.lesson_no = parseFloat(vocabulary.lesson_no);
             vocabulary.createAt = new Date().toLocaleString();
-            vocabulary.admin_email = user?.email;
+            vocabulary.admin_email = user?.email as string;
             console.log(vocabulary)
             // send to db
             const res = await createVocabulary.mutateAsync(vocabulary);

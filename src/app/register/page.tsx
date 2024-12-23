@@ -11,6 +11,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import axios from 'axios';
 import { useCreateUser } from './api/route';
+import { useRouter } from 'next/navigation';
 // types for Inputs
 type Inputs = {
     user_name: string;
@@ -19,6 +20,7 @@ type Inputs = {
     img: File;
 }
 const Register = () => {
+    const router = useRouter()
     const createUser = useCreateUser();
     const [showPassword, setShowPassword] = useState(false);
     const [images, setImages] = useState<ImageListType>([]);
@@ -38,7 +40,9 @@ const Register = () => {
             reader.readAsDataURL(file);
             reader.onload = async () => {
                 try {
-                    const base64Image = reader.result.split(',')[1]; // Extract Base64 content.
+                    const base64Image = (typeof reader.result === 'string')
+                        ? reader.result.split(',')[1]
+                        : '';
 
                     // Upload to ImgBB
                     const { data: res } = await axios.post(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMG_API}`, { image: base64Image }, {
@@ -58,8 +62,12 @@ const Register = () => {
                         const response = await createUser.mutateAsync(user_info);
                         console.log(response)
                         toast.success('register successfully')
+                        router.push('/')
                     } catch (error) {
-                        console.log(error.message)
+                        if (error instanceof Error) {
+                            console.log(error.message)
+                            toast.error(error.message)
+                        }
                     }
 
                     // Successfully obtained the image URL

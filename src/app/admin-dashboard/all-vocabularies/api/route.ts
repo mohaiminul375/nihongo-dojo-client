@@ -11,11 +11,8 @@ interface Vocabulary {
     lesson_no: number,
 }
 
-
-
-
 // TODO: May have some error
-
+// Get Vocabularies for admin
 export const useGetVocabulariesAdmin = (lesson_no: string) => {
     const { data, isLoading: isPending, isError, error } = useQuery<Vocabulary[]>({
         queryFn: async () => {

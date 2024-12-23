@@ -6,13 +6,14 @@ import Loading from '@/app/loading';
 
 interface User {
     _id?: string;
-    user_email?: string;
+    email?: string;
     user_name?: string;
     role?: string;
     img?: string;
 }
 
 interface UserContextType {
+    email?: string;
     user?: User | null;
     loading: boolean;
     error?: string | null;
@@ -23,43 +24,50 @@ interface UserContextType {
 // Create the context
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
+// Main page
 export const UserProvider = ({ children }: { children: ReactNode }) => {
+
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const [token, setToken] = useState<string | null>(null);
+    const [token, setToken] = useState<string | null>(null);  // Set as null initially
     const [error, setError] = useState<string | null>(null);
     const router = useRouter();
 
     useEffect(() => {
-        const fetchUser = async () => {
+        if (typeof window !== 'undefined') {
             const storedToken = localStorage.getItem('token');
             setToken(storedToken);
-            if (!token) {
+
+            if (!storedToken) {
                 setLoading(false);
                 return;
             }
-            try {
-                setLoading(true);
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
 
-                if (response?.data?.user) {
-                    setUser(response.data.user);
-                } else {
-                    setError('User data not found');
+            const fetchUser = async () => {
+                try {
+                    setLoading(true);
+                    const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/user`, {
+                        headers: {
+                            Authorization: `Bearer ${storedToken}`,
+                        },
+                    });
+
+                    if (response?.data?.user) {
+                        setUser(response.data.user);
+                    } else {
+                        setError('User data not found');
+                    }
+                } catch (err) {
+                    setError('Error fetching user data');
+                } finally {
+                    setLoading(false);
                 }
-            } catch (err) {
-                setError('Error fetching user data');
-            } finally {
-                setLoading(false);
-            }
-        };
+            };
 
-        fetchUser();
-    }, [token]);
+            fetchUser();
+        }
+    }, []);  // Run once when component mounts
+
     // Logout and redirect to login page
     const logOut = () => {
         localStorage.removeItem('token');

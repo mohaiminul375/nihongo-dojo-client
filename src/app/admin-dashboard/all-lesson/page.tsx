@@ -10,7 +10,7 @@ const Page = () => {
     if (isPending) {
         return <Loading />
     }
-    
+
     return (
         <section>
             {/* Header Section */}
@@ -29,6 +29,7 @@ const Page = () => {
                             <TableHead className="text-right">Actions</TableHead>
                         </TableRow>
                     </TableHeader>
+                    {/* Table Body */}
                     <TableBody>
                         {lessons?.map((lesson, index) => (
                             <LessonTable

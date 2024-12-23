@@ -8,10 +8,10 @@ import { Progress } from "@/components/ui/progress";
 import { useUser } from "@/AuthProvider/UserContext";
 
 const Page = () => {
-    const { user, loading } = useUser()
+    const { user } = useUser()
     const { data: lessons = [], isPending } = useGetLessonsUser();
-    const { data: progress } = useGetProgress(user?.email);
-    if (isPending || loading) {
+    const { data: progress } = useGetProgress(user?.email as string);
+    if (isPending) {
         return <Loading />
     }
 

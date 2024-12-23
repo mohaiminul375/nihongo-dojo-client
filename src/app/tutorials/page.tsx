@@ -1,22 +1,20 @@
 'use client';
 import withAuth from '@/AuthProvider/withAuth';
 import { useGetTutorials } from '../admin-dashboard/manage-tutorials/api/rote';
+import Loading from '../loading';
 
 const Page = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();
 
     if (isPending) {
-        return (
-            <div className="flex justify-center items-center h-screen bg-gray-900">
-                <p className="text-white text-xl">Loading...</p>
-            </div>
-        );
+        return <Loading />
+
     }
 
     if (isError) {
         return (
             <div className="flex justify-center items-center h-screen bg-gray-900">
-                <p className="text-red-500 text-xl">Error: {error.message}</p>
+                <p className="text-red-500 text-xl">Error: {error?.message}</p>
             </div>
         );
     }

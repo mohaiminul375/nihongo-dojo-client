@@ -9,6 +9,7 @@ import { useCreateLesson } from './api/route';
 import { useUser } from '@/AuthProvider/UserContext';
 import withAdminAuth from '@/AuthProvider/withAdminAuth';
 type Inputs = {
+    email: string;
     lesson_name: string;
     lesson_no: number | number;
     admin_email: string;
@@ -26,7 +27,7 @@ const Page = () => {
     const onSubmit: SubmitHandler<Inputs> = async (new_lesson) => {
         if (typeof new_lesson.lesson_no === 'string') {
             new_lesson.lesson_no = parseFloat(new_lesson.lesson_no)
-            new_lesson.admin_email = user.email;
+            new_lesson.admin_email = user?.email as string;
             if (new_lesson.lesson_no <= 0) {
                 return toast.error('please provide a valid lesson no')
             }

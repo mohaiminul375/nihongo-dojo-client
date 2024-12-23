@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useUserLogin } from "./api/route";
-// import { useRouter } from "next/navigation";
 
 // types for Inputs
 type Inputs = {
@@ -15,7 +14,7 @@ type Inputs = {
     password: string;
 
 }
-
+// Main page
 const Login = () => {
     // const router = useRouter();
     const login = useUserLogin();

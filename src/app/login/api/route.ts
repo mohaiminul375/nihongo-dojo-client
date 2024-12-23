@@ -4,7 +4,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-
+// Handle login
 export const useUserLogin = () => {
     const { setToken } = useUser()
     const router = useRouter();
@@ -14,7 +14,7 @@ export const useUserLogin = () => {
             return data;
         },
         mutationKey: ['login'],
-        onSuccess: (data) => {      
+        onSuccess: (data) => {
             if (data.role === 'Admin') {
                 toast.success('Login successfully');
                 localStorage.setItem('token', data?.token);

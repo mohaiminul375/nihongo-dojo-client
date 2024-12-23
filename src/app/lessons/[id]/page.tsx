@@ -28,14 +28,14 @@ const Page = () => {
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();
-    const { data: lessonContent={}, isPending } = useGetLessonsContent(id as string, currentPg);
+    const { data: lessonContent, isLoading } = useGetLessonsContent(id as string, currentPg);
     const { data: lesson } = useGetLessonHeading(id as string);
-    const { data: progress = [], } = useGetProgress(user?.email);
+    const { data: progress = [], } = useGetProgress(user?.email as string);
     const { width, height } = useWindowSize(); // Get window size for Confetti
-    if (isPending) {
+    if (isLoading) {
         return <Loading />
     }
-    const isCompleted = progress?.lessons?.some((les) => les.lesson_no === lesson.lesson_no) || false;
+    const isCompleted = progress?.lessons?.some((les: { lesson_no: number }) => les.lesson_no === lesson?.lesson_no) || false;
     console.log(isCompleted)
     // handle completed
     const handleComplete = async () => {
@@ -84,11 +84,11 @@ const Page = () => {
                             />
                         </PaginationItem>
                         <PaginationItem>
-                            <PaginationLink className="text-white font-semibold">{`${currentPg}/${lessonContent.totalCount}`}</PaginationLink>
+                            <PaginationLink className="text-white font-semibold">{`${currentPg}/${lessonContent?.totalCount}`}</PaginationLink>
                         </PaginationItem>
                         <PaginationItem>
                             <PaginationNext
-                                className={`bg-white cursor-pointer ${currentPg === lessonContent.totalCount && 'hidden'}`}
+                                className={`bg-white cursor-pointer ${currentPg === lessonContent?.totalCount && 'hidden'}`}
                                 onClick={() => setCurrentPg(currentPg + 1)}
                             />
                         </PaginationItem>
@@ -97,7 +97,7 @@ const Page = () => {
             </div>
             {/* Complete Button */}
             <div
-                className={`px-2 my-3 flex justify-center ${currentPg !== lessonContent.totalCount && 'hidden'
+                className={`px-2 my-3 flex justify-center ${currentPg !== lessonContent?.totalCount && 'hidden'
                     }`}
             >
                 {

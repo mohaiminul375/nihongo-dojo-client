@@ -24,12 +24,12 @@ interface CardProp {
 const LessonCard = ({ lesson }: CardProp) => {
     const { user } = useUser()
     const { lesson_no, lesson_name, vocabulary_count } = lesson;
-    const { data, isPending } = useGetProgress(user?.email);
+    const { data, isPending } = useGetProgress(user?.email as string);
     if (isPending) {
         return <Loading />
     }
-    const isCompleted = data.lessons?.some(lesson => lesson.lesson_no === lesson_no) || false;
- 
+    const isCompleted = data.lessons?.some((les: { lesson_no: number }) => les.lesson_no === lesson_no) || false;
+
     return (
         <Card className="xl:w-[300px] lg:w-[250]">
             <CardHeader className="pb-2">

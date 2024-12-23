@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import axios from "axios"
-
+// Register user
 export const useCreateUser = () => {
     return useMutation({
         mutationFn: async (user_info: object) => {

@@ -9,11 +9,6 @@ interface Lessons {
     vocabulary_count: number;
 }
 
-
-
-
-
-
 // get lessons admin
 export const useGetLessons = () => {
     const { data, isPending, isError, error } = useQuery<Lessons[]>({

@@ -1,6 +1,6 @@
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react'
 import Link from 'next/link'
-// import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+
 
 const Footer = () => {
     return (

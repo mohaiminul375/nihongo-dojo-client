@@ -5,6 +5,7 @@ interface Lessons {
     lesson_no: number;
     lesson_name: string | number;
 }
+// Create a new vocabulary
 export const useCreateVocabulary = () => {
     const queryClient = useQueryClient()
     return useMutation({
@@ -20,6 +21,7 @@ export const useCreateVocabulary = () => {
         }
     })
 }
+// dynamic lessons for dropdown menu./selection
 export const useDropdownLesson = () => {
     const { data, isLoading } = useQuery<Lessons[]>({
         queryFn: async () => {
