@@ -48,7 +48,7 @@
   - Admins can add, edit, and delete vocabulary items for each lesson.
   - Admins can manage users, including promoting or banning users as necessary.
 
-# website features 2.0
+# Upcoming features 2.0
 
 - Default User:
 - More Interactive Lesson Page: Enhanced lesson pages with interactive elements for better learning engagement.
@@ -64,9 +64,9 @@
 
 # Technology
 
-- HTML, CSS,ShadCn, Next.js, Typescript (front-end)
-- Express.js, MongoDB,JWT(back-end)
-- Custom Auth
+- HTML, CSS, ShadCn, Next.js, Typescript (Front-End)
+- Express.js, MongoDB,JWT(Back-End)
+- Custom Authentication
 
 # npm and Packages
 
