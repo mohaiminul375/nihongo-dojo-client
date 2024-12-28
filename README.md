@@ -51,11 +51,11 @@
 # Upcoming features 2.0
 
 - Default User:
-- More Interactive Lesson Page: Enhanced lesson pages with interactive elements for better learning engagement.
-- User Profile: Users can view and update their information, including progress tracking.
+ - More Interactive Lesson Page: Enhanced lesson pages with interactive elements for better learning engagement.
+ - User Profile: Users can view and update their information, including progress tracking.
 
 - Admin:
-- Admin Dashboard: Expanded features for managing users, lessons, and tutorials, including adding, editing, and deleting content.
+ - Admin Dashboard: Expanded features for managing users, lessons, and tutorials, including adding, editing, and deleting content.
 
 # Access Info
 

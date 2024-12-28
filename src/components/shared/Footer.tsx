@@ -42,11 +42,13 @@ const Footer = () => {
                 <div className="flex flex-col items-start text-white space-y-2 text-sm md:text-sm font-semibold">
                     <p>
                         Design & Developed by:{" "}
-                        <Link href="https://mohaiminul-dev.web.app" className="underline hover:text-gray-300">
+                        <Link
+                            target='_blank'
+                            href="https://mohaiminul-dev.web.app" className="underline hover:text-gray-300">
                             Mohaiminul Islam
                         </Link>
                     </p>
-                    <p> Last Update: 23-Dec-2024, 6:00 P.M (BDT)</p>
+                    <p> Last Update: 28-Dec-2024, 9:47 P.M (BDT)</p>
                 </div>
 
             </div>
