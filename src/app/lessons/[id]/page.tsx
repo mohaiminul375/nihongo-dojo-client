@@ -60,7 +60,7 @@ const Page = () => {
     };
 
     return (
-        <section className="border-2 bg-primary rounded-md md:w-96 mx-auto">
+        <section className="border-2 bg-primary rounded-md md:w-96 lg:w-1/2 mx-auto">
             <title>Nihongo-Dojo | Lesson-{id}</title>
             {/* Heading */}
             <div>
@@ -98,11 +98,11 @@ const Page = () => {
             </div>
             {/* Complete Button */}
             <div
-                className={`px-2 my-3 flex justify-center ${currentPg !== lessonContent?.totalCount && 'hidden'
+                className={`px-2 my-3 flex justify-center items-center ${currentPg !== lessonContent?.totalCount && 'hidden'
                     }`}
             >
                 {
-                    isCompleted ? <Link className='w-full' href='/lessons'>
+                    isCompleted ? <Link className='w-full flex justify-center' href='/lessons'>
                         <Button
                             variant="ghost"
                             size="icon"
@@ -113,7 +113,7 @@ const Page = () => {
                     </Link> : <Button
                         variant="ghost"
                         size="icon"
-                        className="w-full md:w-1/2 center bg-green-700 text-white"
+                        className="w-full md:w-1/2 mx-auto center bg-green-700 text-white"
                         onClick={handleComplete} // Trigger handleComplete on click
                     >
                         Complete

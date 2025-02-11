@@ -19,7 +19,7 @@ const Page = () => {
     const completedLessons = progress?.lessons?.length;
     const completionPercentage = (completedLessons / totalLessons) * 100 || 0;
     return (
-        <section>
+        <section className="md:max-w-7xl mx-auto">
             <title>Nihongo-Dojo | Lessons</title>
             {/* Heading */}
             <div className="text-center my-10">

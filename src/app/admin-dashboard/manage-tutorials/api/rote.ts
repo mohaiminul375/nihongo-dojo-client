@@ -45,12 +45,12 @@ export const useDeleteTutorial = () => {
     const queryClient = useQueryClient()
     return useMutation({
         mutationFn: async (id: string) => {
-            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-lesson/${id}`)
+            const { data } = await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/all-tutorials/${id}`)
             return data;
         },
         onSuccess: (data) => {
             console.log(data)
-            queryClient.invalidateQueries({ queryKey: ['all-lesson'] })
+            queryClient.invalidateQueries({ queryKey: ['all-tutorials'] })
         },
         onError: (error) => {
             console.log(error)

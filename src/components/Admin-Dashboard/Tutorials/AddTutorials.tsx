@@ -2,6 +2,7 @@
 import { useCreateTutorials } from "@/app/admin-dashboard/manage-tutorials/api/rote";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import toast from "react-hot-toast";
 
 
 const AddTutorials = () => {
@@ -11,7 +12,9 @@ const AddTutorials = () => {
         e.preventDefault();
         const form = e.target as HTMLFormElement;
         const embed_link = form.link.value;
-
+        if (!embed_link) {
+            return toast.error('enter a link');
+        }
         const res = await addNewVideo.mutateAsync(embed_link);
 
         if (res.insertedId) {

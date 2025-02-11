@@ -48,7 +48,7 @@ const Footer = () => {
                             Mohaiminul Islam
                         </Link>
                     </p>
-                    <p> Last Update: 28-Dec-2024, 9:47 P.M (BDT)</p>
+                    <p> Last Update: 11-Feb-2025, 2:37 P.M (BDT)</p>
                 </div>
 
             </div>

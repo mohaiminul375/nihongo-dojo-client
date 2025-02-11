@@ -5,13 +5,14 @@ import { Button } from "@/components/ui/button";
 import Swal from 'sweetalert2'
 import withAdminAuth from "@/AuthProvider/withAdminAuth";
 import Loading from "@/app/loading";
+import toast from "react-hot-toast";
 const ManageTutorials = () => {
     const { data: tutorials = [], isPending, isError, error } = useGetTutorials();
     const deleteTutorial = useDeleteTutorial()
 
     if (isPending) {
         return <Loading />
-        
+
     }
 
     if (isError) {
@@ -36,18 +37,23 @@ const ManageTutorials = () => {
             const res = await deleteTutorial.mutateAsync(id);
             console.log(res)
             if (result.isConfirmed) {
-                Swal.fire({
-                    title: "Deleted!",
-                    text: "Your file has been deleted.",
-                    icon: "success"
-                });
+                if (res.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    })
+                }else{
+                    toast.error('Opoos:delete failed')    
+                }
+
             }
         });
 
     }
     return (
         <section className="md:max-w-7xl mx-auto">
-             <title>Nihongo-Dojo | Manage Tutorials</title>
+            <title>Nihongo-Dojo | Manage Tutorials</title>
             {/* Header Section */}
             <div className="text-center mb-8">
                 <h2 className="text-3xl text-white font-semibold">Manage Tutorials for Nihongo-DOJO</h2>
