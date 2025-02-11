@@ -5,7 +5,7 @@ import Link from 'next/link'
 const Footer = () => {
     return (
         <footer className="bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7] text-white">
-            <div className="max-w-6xl mx-auto px-4 py-10">
+            <div className="max-w-7xl mx-auto px-4 py-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Company Info */}
                     <div>
@@ -48,7 +48,7 @@ const Footer = () => {
                             Mohaiminul Islam
                         </Link>
                     </p>
-                    <p> Last Update: 11-Feb-2025, 2:37 P.M (BDT)</p>
+                    <p> Last Update: 11-Feb-2025, 4:43 P.M (BDT)</p>
                 </div>
 
             </div>

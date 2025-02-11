@@ -9,13 +9,14 @@ import withAdminAuth from '@/AuthProvider/withAdminAuth';
 
 const Dashboard = () => {
     return (
-        <section>       
-              <title>Nihongo-Dojo | Admin Dashboard</title>     
-            <div className=''>
-                <h2 className='text-center text-2xl font-bold text-white'>Welcome To Admin Dashboard</h2>
-            </div>
+        <section>
+            <title>Nihongo-Dojo | Admin Dashboard</title>
+
             {/* admin layout */}
             <section className='bg-primary md:max-w-7xl mx-auto rounded-md p-10 space-y-10'>
+                <div className=''>
+                    <h2 className='text-center text-4xl font-bold text-white'>Welcome To Admin Dashboard</h2>
+                </div>
                 {/* overview */}
                 <div>
                     <Overview />
@@ -24,13 +25,13 @@ const Dashboard = () => {
                 <div>
                     <Tutorials />
                 </div>
-                {/* Vocabulary */}
-                <div>
-                    <Vocabulary />
-                </div>
                 {/* lesson */}
                 <div>
                     <Lesson />
+                </div>
+                {/* Vocabulary */}
+                <div>
+                    <Vocabulary />
                 </div>
                 {/* user */}
                 <div>

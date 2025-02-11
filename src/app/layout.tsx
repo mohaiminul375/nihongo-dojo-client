@@ -35,7 +35,7 @@ export default function RootLayout({
         <UserProvider>
           <QueryClientProvider client={queryClient}>
             <Navbar />
-            <main className="my-10">
+            <main className="my-10 min-h-[calc(100vh-428px)]">
               {children}
             </main>
             <Footer />
