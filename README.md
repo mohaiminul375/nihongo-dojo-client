@@ -70,7 +70,8 @@
 
 # npm and Packages
 
-- Next.js
+- Next.js(15.0.4)
+- React(18.1.3)
 - Typescript
 - ShadCn
 - RadixUi
