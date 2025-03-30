@@ -1,10 +1,10 @@
 'use client'
-import { useUser } from "@/AuthProvider/UserContext";
+import { useAuth } from "@/AuthProvider/UserContext";
 import { useRouter } from "next/navigation"
 import Loading from "./loading";
 
 export default function Page() {
-  const { user, loading } = useUser();
+  const { user, loading } = useAuth();
 
   const router = useRouter();
 

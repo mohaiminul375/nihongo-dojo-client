@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useUser } from './UserContext';
+import { useAuth} from './UserContext';
 import Loading from '@/app/loading';
 
 
@@ -11,7 +11,7 @@ interface AuthProps {
 
 const withAuth = <P extends object>(WrappedComponent: React.ComponentType<P & AuthProps>) => {
     const ProtectedComponent = (props: P) => {
-        const { user, loading } = useUser();
+        const { user, loading } = useAuth();
         const router = useRouter();
         console.log(user, 'user in pro')
         useEffect(() => {

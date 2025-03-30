@@ -83,7 +83,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 };
 
 // Custom hook to access the context
-export const useUser = (): UserContextType => {
+export const useAuth = (): UserContextType => {
     const context = useContext(UserContext);
     if (!context) {
         throw new Error('useUser must be used within a UserProvider');

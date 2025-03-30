@@ -18,13 +18,13 @@ import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import withAuth from '@/AuthProvider/withAuth';
 import Loading from '@/app/loading';
-import { useUser } from '@/AuthProvider/UserContext';
+import { useAuth } from '@/AuthProvider/UserContext';
 import Link from 'next/link';
 
 const Page = () => {
     const updateProgress = useUpdateProgress()
     const router = useRouter();
-    const { user } = useUser()
+    const { user } = useAuth()
     const [currentPg, setCurrentPg] = useState(1);
     const [showConfetti, setShowConfetti] = useState(false); // State to trigger confetti
     const { id } = useParams();

@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import { useEffect, ComponentType } from 'react';
-import { useUser } from './UserContext';
+import { useAuth } from './UserContext';
 import Loading from '@/app/loading';
 
 interface User {
@@ -18,9 +18,8 @@ interface WithAdminAuthProps {
 
 const withAdminAuth = <P extends object>(WrappedComponent: ComponentType<P & WithAdminAuthProps>) => {
     return (props: P) => {
-        const { user, loading } = useUser();
+        const { user, loading } = useAuth();
         const router = useRouter();
-
         useEffect(() => {
             if (!loading && !user) {
                 router.replace('/lessons');

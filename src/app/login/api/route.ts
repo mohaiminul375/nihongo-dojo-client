@@ -1,12 +1,12 @@
 'use client'
-import { useUser } from "@/AuthProvider/UserContext";
+import { useAuth } from "@/AuthProvider/UserContext";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 // Handle login
 export const useUserLogin = () => {
-    const { setToken } = useUser()
+    const { setToken } = useAuth()
     const router = useRouter();
     return useMutation({
         mutationFn: async (user_info: object) => {

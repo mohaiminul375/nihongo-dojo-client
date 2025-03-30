@@ -7,7 +7,7 @@ import logo from "../../../public/logo.webp";
 import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { useUser } from "@/AuthProvider/UserContext";
+import { useAuth } from "@/AuthProvider/UserContext";
 
 const navItems = [
     {
@@ -26,7 +26,7 @@ const navItems = [
 
 export default function Navbar() {
     const pathname = usePathname();
-    const { user, logOut, loading } = useUser();
+    const { user, logOut, loading } = useAuth();
     console.log(user, loading)
     return (
         <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">

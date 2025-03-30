@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/select"
 import toast from 'react-hot-toast';
 import { useCreateVocabulary, useDropdownLesson } from './api/route';
-import { useUser } from '@/AuthProvider/UserContext';
+import { useAuth } from '@/AuthProvider/UserContext';
 import withAdminAuth from '@/AuthProvider/withAdminAuth';
 import Loading from '@/app/loading';
 
@@ -86,7 +86,7 @@ const Page = () => {
         // watch,
         // formState: { errors },
     } = useForm<Inputs>()
-    const user = useUser();
+    const user = useAuth();
     const { data: lessons = [], isLoading } = useDropdownLesson()
     const createVocabulary = useCreateVocabulary()
     const [lesson, setLesson] = useState('');

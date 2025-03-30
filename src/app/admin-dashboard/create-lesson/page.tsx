@@ -6,7 +6,7 @@ import React from 'react';
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { useCreateLesson } from './api/route';
-import { useUser } from '@/AuthProvider/UserContext';
+import { useAuth } from '@/AuthProvider/UserContext';
 import withAdminAuth from '@/AuthProvider/withAdminAuth';
 type Inputs = {
     email: string;
@@ -16,7 +16,7 @@ type Inputs = {
 }
 const Page = () => {
     const createLesson = useCreateLesson();
-    const { user } = useUser()
+    const { user } = useAuth()
     const {
         register,
         handleSubmit,

@@ -8,7 +8,7 @@ import {
 // import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useUser } from "@/AuthProvider/UserContext";
+import { useAuth } from "@/AuthProvider/UserContext";
 import { useGetProgress } from "@/app/lessons/api/route";
 import Loading from "@/app/loading";
 import { Badge } from "@/components/ui/badge";
@@ -22,7 +22,7 @@ interface CardProp {
     lesson: Lessons
 }
 const LessonCard = ({ lesson }: CardProp) => {
-    const { user } = useUser()
+    const { user } = useAuth()
     const { lesson_no, lesson_name, vocabulary_count } = lesson;
     const { data, isPending } = useGetProgress(user?.email as string);
     if (isPending) {

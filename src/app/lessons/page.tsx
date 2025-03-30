@@ -4,10 +4,10 @@ import { useGetLessonsUser, useGetProgress } from "./api/route";
 import withAuth from "@/AuthProvider/withAuth";
 import Loading from "../loading";
 import { Progress } from "@/components/ui/progress";
-import { useUser } from "@/AuthProvider/UserContext";
+import { useAuth } from "@/AuthProvider/UserContext";
 
 const Page = () => {
-    const { user } = useUser()
+    const { user } = useAuth()
     const { data: lessons = [], isPending } = useGetLessonsUser();
     const { data: progress } = useGetProgress(user?.email as string);
     if (isPending) {

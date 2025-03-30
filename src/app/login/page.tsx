@@ -19,7 +19,7 @@ const Login = () => {
     // const router = useRouter();
     const login = useUserLogin();
     // react hook form
-    // const { } = useUserContext()
+  
     const {
         register,
         handleSubmit,
@@ -47,6 +47,7 @@ const Login = () => {
                         <Label htmlFor="email">Email <span className='text-red-700 font-bold'>*</span></Label>
                         <Input type="email" id="email" placeholder="Enter email"
                             required
+                            defaultValue='nusrat@gmail.com'
                             {...register('email')}
                         />
                     </div >
@@ -61,6 +62,7 @@ const Login = () => {
                                 placeholder="Enter password"
                                 className="pr-10"
                                 required
+                                defaultValue='123456'
                                 {...register('password')}
                             />
                             <Button
