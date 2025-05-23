@@ -35,11 +35,6 @@ const ContentCard = ({ content }: Content) => {
                     <span className="font-bold">Meaning:</span> {english_meaning}
                 </p>
             </CardContent>
-            <CardFooter>
-
-
-
-            </CardFooter>
         </Card>
     );
 };

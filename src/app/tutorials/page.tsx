@@ -24,15 +24,15 @@ const Page = () => {
             <title>Nihongo-Dojo | Tutorials</title>
             {/* Header Section */}
             <div className="text-center mb-8">
-                <h2 className="text-3xl text-white font-semibold">Explore YouTube Tutorials</h2>
+                <h2 className="text-3xl text-accent font-semibold">Explore YouTube Tutorials</h2>
                 <p className="text-gray-400 mt-2">Browse through the tutorials below</p>
             </div>
 
             {/* Video Grid Section */}
             <div>
                 <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl text-white font-semibold">All YouTube Videos</h3>
-                    <p className="text-white font-medium">Total Videos: {tutorials.length}</p>
+                    <h3 className="text-xl text-accent font-semibold">All YouTube Videos</h3>
+                    <p className="text-accent font-medium">Total Videos: {tutorials.length}</p>
                 </div>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
