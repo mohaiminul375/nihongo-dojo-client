@@ -35,7 +35,7 @@ const Footer = () => {
                             <a href="" className="hover:text-gray-300 transition-colors"><Linkedin size={24} /></a>
                         </div>
                         <p>Email: info@nihongo.com</p>
-                        <p>Phone: (123) 456-7890</p>
+                        <p>Phone: +880 9638-427483</p>
                     </div>
                 </div>
                 {/* developer info */}
