@@ -40,13 +40,13 @@ const Page = () => {
             <title>Nihongo-Dojo | All Vocabularies</title>
             {/* Heading */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-white font-semibold">Manage Your Vocabularies</h2>
+                <h2 className="text-3xl  font-semibold text-foreground">Manage Your Vocabularies</h2>
                 <p className="text-gray-400 mt-2">Edit, or delete vocabularies to keep them up to date for learners.</p>
             </div>
             {/* Table */}
             <div className="md:max-w-6xl mx-auto text-white">
                 <div className="flex justify-between p-2">
-                    <div className="font-semibold">
+                    <div className="font-semibold text-foreground">
                         Total Vocabulary:{vocabularies?.length}
                     </div>
                     <Select
@@ -56,7 +56,7 @@ const Page = () => {
                     // value={lesson}
                     >
                         <SelectTrigger
-                            className="md:w-[200px] bg-[#29274d]">
+                            className="md:w-[200px] bg-foreground">
                             <SelectValue
                                 placeholder="Lesson No"
                             />
@@ -70,7 +70,7 @@ const Page = () => {
                         </SelectContent>
                     </Select>
                 </div>
-                <div className=" bg-[#29274d] rounded-md p-5">
+                <div className=" bg-foreground rounded-md p-5">
                     <Table className="">
                         <TableHeader>
                             <TableRow>

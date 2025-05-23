@@ -56,12 +56,12 @@ const ManageTutorials = () => {
             <title>Nihongo-Dojo | Manage Tutorials</title>
             {/* Header Section */}
             <div className="text-center mb-8">
-                <h2 className="text-3xl text-white font-semibold">Manage Tutorials for Nihongo-DOJO</h2>
+                <h2 className="text-3xl text-foreground font-semibold">Manage Tutorials for Nihongo-DOJO</h2>
                 <p className="text-gray-400 mt-2">Manage your tutorials and video content here</p>
             </div>
 
             {/* Add New Tutorial */}
-            <div className="mb-8">
+            <div className="mb-8 ">
                 <AddTutorials />
             </div>
 
@@ -74,7 +74,7 @@ const ManageTutorials = () => {
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     {tutorials?.map((video) => (
-                        <div key={video._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div key={video._id} className="bg-foreground rounded-lg shadow-lg overflow-hidden">
                             {/* Video Embed */}
                             <div className="relative pb-[60.25%]">
                                 <iframe
@@ -89,7 +89,7 @@ const ManageTutorials = () => {
                             </div>
 
                             {/* Content Below Video */}
-                            <div className="bg-gray-100 p-4 text-center">
+                            <div className="bg-foreground p-4 text-center">
                                 <h3 className="text-lg font-semibold text-gray-800 truncate">{video.title}</h3>
                                 <Button
                                     onClick={() => handleDeleteVideo(video._id)}

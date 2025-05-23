@@ -22,7 +22,7 @@ const AddTutorials = () => {
         }
     }
     return (
-        <div className="  text-white rounded-md bg-[#29274d] md:w-1/4 mx-auto p-5 my-5">
+        <div className="  text-white rounded-md bg-foreground md:w-1/4 mx-auto p-5 my-5">
             <h2 className="text-center p-3">Add a new Tutorial</h2>
             <form
                 onSubmit={handleLinkSubmit}

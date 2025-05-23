@@ -21,11 +21,11 @@ const Page = () => {
             <title>Nihongo-Dojo | User Progresses</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-white font-semibold">Track User Progress</h2>
+                <h2 className="text-3xl text-foreground font-semibold">Track User Progress</h2>
                 <p className="text-gray-400 mt-2">Track User lessons progress</p>
             </div>
 
-            <div className="md:max-w-6xl mx-auto text-white bg-[#29274d] rounded-md p-5">
+            <div className="md:max-w-6xl mx-auto text-white bg-foreground rounded-md p-5">
                 <Table className="">
                     <TableHeader>
                         <TableRow>

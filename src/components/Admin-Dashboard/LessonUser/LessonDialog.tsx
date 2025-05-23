@@ -32,7 +32,7 @@ const LessonDialog = ({ lesson }) => {
         }
     }
     return (
-        <div className='mt-10 bg-[#29274d] w-full mx-auto text-white p-10 shadow-2xl border-white border rounded-md'>
+        <div className='mt-10 bg-foreground w-full mx-auto text-white p-10 shadow-2xl border-white border rounded-md'>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className='space-y-3'>

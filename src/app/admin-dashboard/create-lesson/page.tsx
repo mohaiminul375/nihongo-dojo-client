@@ -47,11 +47,11 @@ const Page = () => {
              <title>Nihongo-Dojo | Create Lessons</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-white font-semibold">Create Lesson</h2>
+                <h2 className="text-3xl text-foreground font-semibold">Create Lesson</h2>
                 <p className="text-gray-400 mt-2">create Lesson for student</p>
             </div>
             {/* Form Section */}
-            <div className='mt-10 bg-[#29274d] md:max-w-6xl mx-auto text-white p-10 shadow-2xl border-white border rounded-md'>
+            <div className='mt-10 bg-foreground md:max-w-6xl mx-auto text-white p-10 shadow-2xl border-white border rounded-md'>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className='space-y-3'>
