@@ -51,7 +51,7 @@ const LessonCard = ({ lesson }: CardProp) => {
             </CardContent>
             <CardFooter>
                 <Link className="w-full" href={`/lessons/${lesson_no}`}>
-                    <Button variant='default' size='lg'>
+                    <Button className="" variant='default' size='lg'>
                         {/* {isCompleted ? "Review Lesson" : "Start Lesson"} */}
                         Start Lesson
                     </Button>
