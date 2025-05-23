@@ -35,7 +35,7 @@ const Login = () => {
     return (
         <section>
             <title>Nihongo-Dojo | Login</title>
-            <div className="border-2 rounded-md md:max-w-[500px] mx-auto bg-[#29274d] text-white p-5 py-20">
+            <div className="border-2 rounded-md md:max-w-[500px] mx-auto bg-foreground text-white p-5 py-20 shadow-2xl">
                 <h2 className="text-center font-bold text-2xl mb-6">Log In </h2>
 
                 {/* Form */}

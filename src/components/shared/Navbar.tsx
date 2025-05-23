@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/AuthProvider/UserContext";
+import { useTheme } from "next-themes";
 
 const navItems = [
     {
@@ -27,9 +28,13 @@ const navItems = [
 export default function Navbar() {
     const pathname = usePathname();
     const { user, logOut, loading } = useAuth();
-    console.log(user, loading)
+    const { setTheme } = useTheme()
+    console.log(user, loading);
+    const currentTheme = localStorage.getItem('theme')
+    console.log(currentTheme)
+    if (!currentTheme) return setTheme('system')
     return (
-        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl border-b-2 bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7]">
+        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl bg-foreground">
             {/* Mobile Menu Icon */}
             <div className="lg:hidden mr-4">
                 <Sheet>
@@ -65,13 +70,14 @@ export default function Navbar() {
             <Link href="/" className="flex items-center" prefetch={false}>
                 <MountainIcon />
                 <span className="ml-2 text-lg text-white hidden lg:block">Nihongo Dojo</span>
-            </Link>
 
+            </Link>
             {/* Desktop Navigation Menu */}
             <div className="hidden lg:flex flex-grow justify-end mr-4">
                 <NavigationMenu>
                     <NavigationMenuList className="flex space-x-3">
                         {navItems.map((item, index) => {
+
                             if (item.title === 'Admin Dashboard' && user?.role !== 'Admin') {
                                 return null;
                             }
@@ -117,6 +123,14 @@ export default function Navbar() {
                     </Link>
                 </div>
             )}
+            {/* theme */}
+            <div className="ml-3">
+                {currentTheme === "light" ? <MoonIcon
+                    onClick={() => setTheme('dark')}
+                    className="" /> : <SunIcon
+                    onClick={() => setTheme('light')}
+                    className="" />}
+            </div>
         </header>
 
 
@@ -134,4 +148,51 @@ function MenuIcon() {
 // Logo for large devices
 function MountainIcon() {
     return <Image className="rounded-full" src={logo} alt="Logo" height={40} width={40} />;
+}
+
+function MoonIcon(props: object) {
+    console.log(props)
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+    )
+}
+
+function SunIcon(props: object) {
+    return (
+        <svg
+            {...props}
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+    )
 }

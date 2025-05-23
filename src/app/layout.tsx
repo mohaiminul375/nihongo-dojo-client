@@ -10,7 +10,7 @@ import {
 import { UserProvider } from "@/AuthProvider/UserContext";
 import Footer from '@/components/shared/Footer';
 // import { UserProvider } from "@/AuthProvider/UserContext";
-
+import { ThemeProvider } from "next-themes"
 
 const roboto = Roboto({
   subsets: ['latin'], // Add subsets as needed
@@ -27,21 +27,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <body
         className={`${roboto.className} antialiased`}
       >
-        <title>Nihongo-Dojo </title>
-        <UserProvider>
-          <QueryClientProvider client={queryClient}>
-            <Navbar />
-            <main className="my-10 min-h-[calc(100vh-428px)]">
-              {children}
-            </main>
-            <Footer />
-            <Toaster />
-          </QueryClientProvider>
-        </UserProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <title>Nihongo-Dojo </title>
+          <UserProvider>
+            <QueryClientProvider client={queryClient}>
+              <Navbar />
+              <main className="my-10 min-h-[calc(100vh-428px)]">
+                {children}
+              </main>
+              <Footer />
+              <Toaster />
+            </QueryClientProvider>
+          </UserProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
