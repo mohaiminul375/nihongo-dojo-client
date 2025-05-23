@@ -5,11 +5,11 @@ import vocIcon from '../../../../public/japanise-vocabulary.svg'
 const Vocabulary = () => {
     return (
         <div className="text-white">
-            <h2 className="text-2xl underline font-bold">Vocabulary Management</h2>
+            <h2 className="text-2xl underline font-bold text-foreground">Vocabulary Management</h2>
             <div className="grid lg:grid-cols-5 gap-6 mt-8">
 
                 <Link href="/admin-dashboard/all-vocabularies">
-                    <div className="group bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7] border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
+                    <div className="group bg-foreground border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
                         <Image
                             src={vocIcon}
                             alt='vocIcon'
@@ -22,7 +22,7 @@ const Vocabulary = () => {
                     </div>
                 </Link>
                 <Link href="/admin-dashboard/create-vocabularies">
-                    <div className="group bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7] border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
+                    <div className="group bg-foreground border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
                         <Image
                             src={vocIcon}
                             alt='vocIcon'

@@ -23,7 +23,7 @@ const Page = () => {
             <title>Nihongo-Dojo | Lessons</title>
             {/* Heading */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-white font-semibold">Explore Your Lessons</h2>
+                <h2 className="text-3xl text-foreground font-semibold">Explore Your Lessons</h2>
                 <p className="text-gray-400 mt-2 md:w-1/2 mx-auto">
                     Browse through all the lessons, learn new vocabulary, and track your progress.
                     Click on any lesson to dive deeper into its content and expand your knowledge.
@@ -31,8 +31,8 @@ const Page = () => {
             </div>
             {/* Progress Bar */}
             <div className="flex justify-center md:justify-end my-4">
-                <div className="flex flex-col items-center bg-white shadow-md rounded-lg p-4 md:w-1/3">
-                    <p className="text-primary  text-sm font-semibold mb-2">
+                <div className="flex flex-col items-center bg-foreground shadow-md rounded-lg p-4 md:w-1/3">
+                    <p className="text-white  text-sm font-semibold mb-2">
                         Progress: {completionPercentage.toFixed(2)}%
                     </p>
                     <Progress value={completionPercentage} className="w-full h-4 bg-gray-200" />

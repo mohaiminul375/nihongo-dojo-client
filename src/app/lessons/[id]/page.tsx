@@ -60,7 +60,7 @@ const Page = () => {
     };
 
     return (
-        <section className="border-2 bg-primary rounded-md md:w-96 lg:w-1/2 mx-auto">
+        <section className="border-2 bg-foreground rounded-md md:w-96 lg:w-1/2 mx-auto">
             <title>Nihongo-Dojo | Lesson-{id}</title>
             {/* Heading */}
             <div>

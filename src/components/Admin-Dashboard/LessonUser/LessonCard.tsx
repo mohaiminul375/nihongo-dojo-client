@@ -31,7 +31,7 @@ const LessonCard = ({ lesson }: CardProp) => {
     const isCompleted = data.lessons?.some((les: { lesson_no: number }) => les.lesson_no === lesson_no) || false;
 
     return (
-        <Card className="xl:w-[300px] lg:w-[250]">
+        <Card className="xl:w-[300px] bg-foreground text-white lg:w-[250]">
             <CardHeader className="pb-2">
                 <div className="flex justify-between items-center">
                     <span className="text-2xl font-bold">Lesson {lesson_no}</span>
@@ -45,7 +45,7 @@ const LessonCard = ({ lesson }: CardProp) => {
             </CardHeader>
             <CardContent>
                 <h3 className="text-xl font-semibold mb-2">{lesson_name}</h3>
-                <p className="text-sm text-muted-foreground font-bold">
+                <p className="text-sm text-white font-bold">
                     Vocabulary: {vocabulary_count} words
                 </p>
             </CardContent>

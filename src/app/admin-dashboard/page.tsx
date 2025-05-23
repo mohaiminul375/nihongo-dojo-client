@@ -13,9 +13,9 @@ const Dashboard = () => {
             <title>Nihongo-Dojo | Admin Dashboard</title>
 
             {/* admin layout */}
-            <section className='bg-primary md:max-w-7xl mx-auto rounded-md p-10 space-y-10'>
+            <section className=' md:max-w-7xl mx-auto rounded-md p-10 space-y-10'>
                 <div className=''>
-                    <h2 className='text-center text-4xl font-bold text-white'>Welcome To Admin Dashboard</h2>
+                    <h2 className='text-center text-4xl font-bold text-foreground'>Welcome To Admin Dashboard</h2>
                 </div>
                 {/* overview */}
                 <div>

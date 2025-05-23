@@ -14,13 +14,13 @@ const Overview = () => {
     console.log(summary)
 
     return (
-        <div className="text-white p-6">
-            <h2 className="text-2xl font-semibold underline mb-6">Overview</h2>
+        <div className="text-white p-2">
+            <h2 className="text-2xl font-semibold underline mb-3 text-foreground">Overview</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
                 {/* Total Tutorials */}
-                <div className="bg-gray-900 p-5 rounded-xl shadow-md flex items-center gap-4">
+                <div className="bg-foreground p-5 rounded-xl shadow-md flex items-center gap-4">
                     <BookCopy size={40} className="text-green-400" />
                     <div>
                         <h2 className="text-lg font-semibold">Total Tutorials</h2>
@@ -29,7 +29,7 @@ const Overview = () => {
                 </div>
 
                 {/* Total Lessons */}
-                <div className="bg-gray-900 p-5 rounded-xl shadow-md flex items-center gap-4">
+                <div className="bg-foreground p-5 rounded-xl shadow-md flex items-center gap-4">
                     <BookCheck />
                     <div>
                         <h2 className="text-lg font-semibold">Total Lessons</h2>
@@ -38,7 +38,7 @@ const Overview = () => {
                 </div>
 
                 {/* Total Vocabulary */}
-                <div className="bg-gray-900 p-5 rounded-xl shadow-md flex items-center gap-4">
+                <div className="bg-foreground p-5 rounded-xl shadow-md flex items-center gap-4">
                     <Image src={vocabulary} alt="vocabulary_icon" width={50} height={50} />
                     <div>
                         <h2 className="text-lg font-semibold">Total Vocabulary</h2>
@@ -47,7 +47,7 @@ const Overview = () => {
                 </div>
 
                 {/* Total Users */}
-                <div className="bg-gray-900 p-5 rounded-xl shadow-md flex items-center gap-4">
+                <div className="bg-foreground p-5 rounded-xl shadow-md flex items-center gap-4">
                     <Users2 size={40} className="text-blue-400" />
                     <div>
                         <h2 className="text-lg font-semibold">Total Users</h2>
@@ -56,7 +56,7 @@ const Overview = () => {
                 </div>
 
                 {/* Admins */}
-                <div className="bg-gray-900 p-5 rounded-xl shadow-md flex items-center gap-4">
+                <div className="bg-foreground p-5 rounded-xl shadow-md flex items-center gap-4">
                     <UserCog size={40} className="text-red-400" />
                     <div>
                         <h2 className="text-lg font-semibold">Admin</h2>

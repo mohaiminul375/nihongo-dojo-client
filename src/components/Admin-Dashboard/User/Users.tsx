@@ -9,7 +9,7 @@ const Users = () => {
             <div className="grid lg:grid-cols-5 gap-6 mt-8">
 
                 <Link href="/admin-dashboard/user-management">
-                    <div className="group bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7] border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
+                    <div className="group bg-foreground border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
 
                         <Users2
                             className="group-hover:rotate-12 transition-transform duration-300 h-10 w-20"
@@ -20,7 +20,7 @@ const Users = () => {
                     </div>
                 </Link>
                 <Link href="/admin-dashboard/user-progress">
-                    <div className="group bg-gradient-to-b from-[#302b63] via-[#5754f7] to-[#6a5af7] border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
+                    <div className="group bg-foreground border border-white rounded-lg shadow-md p-5 flex flex-col items-center space-y-4 transition-transform duration-300 hover:scale-105 hover:shadow-xl h-full hover:border-primary">
 
                         <Activity
                             className="group-hover:rotate-12 transition-transform duration-300 h-10 w-20"

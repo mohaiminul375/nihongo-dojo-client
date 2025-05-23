@@ -34,7 +34,7 @@ export default function Navbar() {
     console.log(currentTheme)
     if (!currentTheme) return setTheme('system')
     return (
-        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl bg-foreground">
+        <header className="flex h-20 w-full items-center px-4 md:px-6 shadow-2xl bg-foreground fixed top-0">
             {/* Mobile Menu Icon */}
             <div className="lg:hidden mr-4">
                 <Sheet>
