@@ -5,7 +5,7 @@ import Link from "next/link";
 const Tutorials = () => {
     return (
         <div className="">
-            <h2 className="text-2xl underline font-bold text-foreground">Tutorial Management</h2>
+            <h2 className="text-2xl underline font-bold text-accent">Tutorial Management</h2>
             <div className="grid lg:grid-cols-5 gap-6 mt-3">
                 {/* All Orders Card */}
                 <Link href="/admin-dashboard/manage-tutorials">
@@ -13,7 +13,7 @@ const Tutorials = () => {
                         <BookCopy
                             className="group-hover:rotate-12 transition-transform duration-300 h-10 w-20"
                         />
-                        <h2 className="text-lg font-semibold text-accent text-center ">
+                        <h2 className="text-lg font-semibold text-white text-center ">
                             All Tutorial
                         </h2>
                     </div>

@@ -5,7 +5,7 @@ import vocIcon from '../../../../public/japanise-vocabulary.svg'
 const Vocabulary = () => {
     return (
         <div className="text-white">
-            <h2 className="text-2xl underline font-bold text-foreground">Vocabulary Management</h2>
+            <h2 className="text-2xl underline font-bold text-accent">Vocabulary Management</h2>
             <div className="grid lg:grid-cols-5 gap-6 mt-3">
 
                 <Link href="/admin-dashboard/all-vocabularies">
@@ -16,7 +16,7 @@ const Vocabulary = () => {
                             width={50}
                             height={50}
                         />
-                        <h2 className="text-lg font-semibold text-accent text-center ">
+                        <h2 className="text-lg font-semibold text-white text-center ">
                             All Vocabularies
                         </h2>
                     </div>
@@ -29,7 +29,7 @@ const Vocabulary = () => {
                             width={50}
                             height={50}
                         />
-                        <h2 className="text-lg font-semibold text-accent text-center ">
+                        <h2 className="text-lg font-semibold text-white text-center ">
                             Create Vocabularies
                         </h2>
                     </div>

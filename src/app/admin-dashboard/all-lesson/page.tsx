@@ -16,11 +16,11 @@ const Page = () => {
             <title>Nihongo-Dojo | All Lessons</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-foreground font-semibold">Manage Lessons</h2>
+                <h2 className="text-3xl text-accent font-semibold">Manage Lessons</h2>
                 <p className="text-gray-400 mt-2">Edit, Delete All Lessons</p>
             </div>
             <div className="mb-5">
-                <div className="font-semibold text-foreground">
+                <div className="font-semibold text-accent">
                     Total Lesson:{lessons?.length}
                 </div>
             </div>

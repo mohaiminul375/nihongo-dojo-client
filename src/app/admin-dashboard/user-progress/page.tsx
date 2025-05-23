@@ -21,7 +21,7 @@ const Page = () => {
             <title>Nihongo-Dojo | User Progresses</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-foreground font-semibold">Track User Progress</h2>
+                <h2 className="text-3xl text-accent font-semibold">Track User Progress</h2>
                 <p className="text-gray-400 mt-2">Track User lessons progress</p>
             </div>
 

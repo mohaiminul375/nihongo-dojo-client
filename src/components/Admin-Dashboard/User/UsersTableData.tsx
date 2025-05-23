@@ -150,13 +150,13 @@ const UsersTableData = ({ user, idx }: TableProps) => {
                         className="disabled:cursor-not-allowed"
                         disabled={status === 'Ban' || email === 'admin1@nihongo.com'}
                         onClick={() => handleBanUser(_id)}
-                        variant="outline" size="sm">
+                        variant="secondary" size="sm">
                         <Ban />
                     </Button>
                     <Button
                         disabled={email === 'admin1@nihongo.com'}
                         onClick={(() => handleDeleteUser(_id))}
-                        variant="outline" size="sm" className="text-red-700">
+                        variant="secondary" size="sm" className="text-red-700">
                         Delete
                     </Button>
                 </div>

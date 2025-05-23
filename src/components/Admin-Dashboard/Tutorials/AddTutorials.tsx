@@ -32,7 +32,7 @@ const AddTutorials = () => {
                     type="text" id="link" placeholder="Enter embed youtube link"
 
                 />
-                <Button variant='outline' type="submit">Add</Button>
+                <Button className="" variant='default' type="submit">Add</Button>
             </form>
         </div>
     );

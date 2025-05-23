@@ -93,7 +93,7 @@ const Register = () => {
     return (
         <section>
             <title>Nihongo-Dojo | Register</title>
-            <div className="border-2 rounded-md md:max-w-[500px] mx-auto bg-[#29274d] text-white p-5 py-8">
+            <div className="border-2 rounded-md md:max-w-[500px] mx-auto bg-foreground text-white p-5 py-8">
                 <h2 className="text-center font-bold text-2xl mb-6">Register</h2>
 
                 {/* Image Preview Section */}

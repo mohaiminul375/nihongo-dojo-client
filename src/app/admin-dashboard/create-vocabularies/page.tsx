@@ -122,7 +122,7 @@ const Page = () => {
             <title>Nihongo-Dojo | Create Vocabularies</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-foreground font-semibold">Create Vocabularies</h2>
+                <h2 className="text-3xl text-accent font-semibold">Create Vocabularies</h2>
                 <p className="text-gray-400 mt-2">Learn new words and expand your knowledge by adding new vocabulary to each lesson.</p>
             </div>
             {/* Form Section */}

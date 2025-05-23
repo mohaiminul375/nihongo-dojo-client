@@ -15,7 +15,7 @@ const Dashboard = () => {
             {/* admin layout */}
             <section className=' md:max-w-7xl mx-auto rounded-md p-10 space-y-10'>
                 <div className=''>
-                    <h2 className='text-center text-4xl font-bold text-foreground'>Welcome To Admin Dashboard</h2>
+                    <h2 className='text-center text-4xl font-bold text-accent'>Welcome To Admin Dashboard</h2>
                 </div>
                 {/* overview */}
                 <div>

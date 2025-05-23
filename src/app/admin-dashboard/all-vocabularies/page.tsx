@@ -40,13 +40,13 @@ const Page = () => {
             <title>Nihongo-Dojo | All Vocabularies</title>
             {/* Heading */}
             <div className="text-center my-10">
-                <h2 className="text-3xl  font-semibold text-foreground">Manage Your Vocabularies</h2>
+                <h2 className="text-3xl  font-semibold text-accent">Manage Your Vocabularies</h2>
                 <p className="text-gray-400 mt-2">Edit, or delete vocabularies to keep them up to date for learners.</p>
             </div>
             {/* Table */}
             <div className="md:max-w-6xl mx-auto text-white">
                 <div className="flex justify-between p-2">
-                    <div className="font-semibold text-foreground">
+                    <div className="font-semibold text-accent">
                         Total Vocabulary:{vocabularies?.length}
                     </div>
                     <Select

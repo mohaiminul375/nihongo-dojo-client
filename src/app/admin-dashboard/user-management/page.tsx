@@ -26,7 +26,7 @@ const UserTable = () => {
             <title>Nihongo-Dojo | User Management</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-foreground font-semibold">Manage Users for Nihongo Dojo</h2>
+                <h2 className="text-3xl text-accent font-semibold">Manage Users for Nihongo Dojo</h2>
                 <p className="text-gray-400 mt-2">View, update, or delete user information with ease</p>
             </div>
 

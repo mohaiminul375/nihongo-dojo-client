@@ -68,7 +68,7 @@ const LessonTable = ({ lesson, idx }: TableProps) => {
                 <div className="flex justify-end gap-2">
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                         <DialogTrigger asChild>
-                            <Button variant="outline" size="sm">
+                            <Button variant="secondary" size="sm">
                                 Edit
                             </Button>
                         </DialogTrigger>
@@ -84,7 +84,7 @@ const LessonTable = ({ lesson, idx }: TableProps) => {
                     </Dialog>
                     <Button
                         onClick={() => handleDeleteLesson(_id)}
-                        variant="outline" size="sm" className="text-red-700">
+                        variant="secondary" size="sm" className="text-red-700">
                         Delete
                     </Button>
                 </div>

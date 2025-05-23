@@ -47,7 +47,7 @@ const Page = () => {
              <title>Nihongo-Dojo | Create Lessons</title>
             {/* Header Section */}
             <div className="text-center my-10">
-                <h2 className="text-3xl text-foreground font-semibold">Create Lesson</h2>
+                <h2 className="text-3xl text-accent font-semibold">Create Lesson</h2>
                 <p className="text-gray-400 mt-2">create Lesson for student</p>
             </div>
             {/* Form Section */}
